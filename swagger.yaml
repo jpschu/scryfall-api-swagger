@@ -8,14 +8,50 @@ servers:
     description: "gfycat api"
 tags:
   - name: "Sets"
-    description: ""
-  - name: "cards"
+    description: "A Set object represents a group of related Magic cards. All Card objects on Scryfall belong to exactly one set."
+  - name: "Cards"
     description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
+  - name: "Rulings"
+    description: "Rulings represent Oracle rulings, Wizards of the Coast set release notes, or Scryfall notes for a particular card.If two cards have the same name, they will have the same set of rulings objects. If a card has rulings, it usually has more than one.Rulings with a scryfall source have been added by the Scryfall team, either to provide additional context for the card, or explain how the card works in an unofficial format (such as Duel Commander)."
+  - name: "Card Symbols"
+    description: "A Card Symbol object represents an illustrated symbol that may appear in card’s mana cost or Oracle text. Symbols are based on the notation used in the Comprehensive Rules."
 paths:
+  /sets:
+    get:
+      tags:
+        - "Sets"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /sets/code:
+    get:
+      tags:
+        - "Sets"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /sets/tcgplayer/id:
+    get:
+      tags:
+        - "Sets"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /sets/id:
+    get:
+      tags:
+        - "Sets"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
   /cards/search:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -23,7 +59,7 @@ paths:
   /cards/named:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -31,7 +67,7 @@ paths:
   /cards/autocomplete:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -39,7 +75,7 @@ paths:
   /cards/random:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       parameters:
         - name: q
@@ -80,7 +116,7 @@ paths:
   /cards/collection:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -88,7 +124,7 @@ paths:
   /cards/code/number/lang:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -96,7 +132,7 @@ paths:
   /cards/multiverse/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -104,7 +140,7 @@ paths:
   /cards/mtgo/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -112,7 +148,7 @@ paths:
   /cards/arena/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -120,7 +156,7 @@ paths:
   /cards/tcgplayer/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -128,7 +164,7 @@ paths:
   /cards/cardmarket/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
@@ -136,11 +172,69 @@ paths:
   /cards/id:
     get:
       tags:
-        - "cards"
+        - "Cards"
       summary: "Returns a single random Card object"
       responses:
         200:
           description: "Ok"
+  /cards/multiverse/id/rulings:
+    get:
+      tags:
+        - "Rulings"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/mtgo/id/rulings:
+    get:
+      tags:
+        - "Rulings"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/arena/id/rulings:
+    get:
+      tags:
+        - "Rulings"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/code/number/rulings:
+    get:
+      tags:
+        - "Rulings"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/id/rulings:
+    get:
+      tags:
+        - "Rulings"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /symbology:
+    get:
+      tags:
+        - "Card Symbols"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /symbology/parse-mana:
+    get:
+      tags:
+        - "Card Symbols"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+
+
 components:
   schemas:
     Error:
