@@ -10,6 +10,30 @@ tags:
   - name: "cards"
     description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
 paths:
+  /cards/search:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/named:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/autocomplete:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
   /cards/random:
     get:
       tags:
@@ -51,3 +75,67 @@ paths:
           description: "Unauthorized"
         200:
           description: "OK"
+  /cards/collection:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/code/number/lang:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/multiverse/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/mtgo/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/arena/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/tcgplayer/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/cardmarket/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /cards/id:
+    get:
+      tags:
+        - "cards"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
