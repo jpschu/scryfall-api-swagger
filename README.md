@@ -1,2 +1,2 @@
-# testing-swagger
-Using this repository to test hosting Swagger via GitHub Pages
+# Scryfall REST API Documentation via Swagger
+Using this repository to convert the current Scryfall API Documentation into Swagger.
