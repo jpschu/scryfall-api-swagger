@@ -32,6 +32,10 @@ paths:
       responses:
         200:
           description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
   /sets/{code}:
     get:
       tags:
@@ -513,6 +517,79 @@ components:
          nullable: true
          items:
            type: "string"
+    Set:
+      description: ""
+      type: "object"
+      properties:
+        id:
+          description: "A unique ID for this set on Scryfall that will not change."
+          type: "string"
+          format: "uuid"
+        code:
+          description: "The unique three to five-letter code for this set."
+          type: "string"
+        mtgo_code:
+          description: "The unique code for this set on MTGO, which may differ from the regular code."
+          type: "string"
+          nullable: true
+        tcgplayer_id:
+          description: "This set’s ID on TCGplayer’s API, also known as the groupId."
+          type: "integer"
+          nullable: true
+        name:
+          description: "The English name of the set."
+          type: "string"
+        set_type:
+          description: "A computer-readable classification for this set. See below."
+          type: "string"
+        released_at:
+          description: "The date the set was released or the first card was printed in the set (in GMT-8 Pacific time)."
+          type: "string"
+          format: "date"
+        block_code:
+          description: "The block code for this set, if any."
+          type: "string"
+          nullable: true
+        block:
+          description: "The block or group name code for this set, if any."
+          type: "string"
+          nullable: true
+        parent_set_code:
+          description: "The set code for the parent set, if any. promo and token sets often have a parent set."
+          type: "string"
+          nullable: true
+        card_count:
+          description: "The number of cards in this set."
+          type: "integer"
+        printed_size:
+          description: "The denominator for the set’s printed collector numbers."
+          type: "integer"
+          nullable: true
+        digital:
+          description: "True if this set was only released in a video game."
+          type: "boolean"
+        foil_only:
+          description: "True if this set contains only foil cards."
+          type: "boolean"
+        nonfoil_only:
+          description: "True if this set contains only nonfoil cards."
+          type: "boolean"
+        scryfall_uri:
+          description: "A link to this set’s permapage on Scryfall’s website."
+          type: "string"
+          format: "uri"
+        uri:
+          description: "A link to this set object on Scryfall’s API."
+          type: "string"
+          format: "uri"
+        icon_svg_uri:
+          description: "A URI to an SVG file for this set’s icon on Scryfall’s CDN. Hotlinking this image isn’t recommended, because it may change slightly over time. You should download it and use it locally for your particular user interface needs."
+          type: "string"
+          format: "uri"
+        search_uri:
+          description: "A Scryfall API URI that you can request to begin paginating over the cards in this set."
+          type: "string"
+          format: "uri"
   parameters:
     formatJson:
       name: format
