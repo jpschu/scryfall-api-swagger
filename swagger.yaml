@@ -15,6 +15,12 @@ tags:
     description: "Rulings represent Oracle rulings, Wizards of the Coast set release notes, or Scryfall notes for a particular card.If two cards have the same name, they will have the same set of rulings objects. If a card has rulings, it usually has more than one.Rulings with a scryfall source have been added by the Scryfall team, either to provide additional context for the card, or explain how the card works in an unofficial format (such as Duel Commander)."
   - name: "Card Symbols"
     description: "A Card Symbol object represents an illustrated symbol that may appear in card’s mana cost or Oracle text. Symbols are based on the notation used in the Comprehensive Rules."
+  - name: "Catalog"
+    description: "A Catalog object contains an array of Magic datapoints (words, card values, etc). Catalog objects are provided by the API as aids for building other Magic software and understanding possible values for a field on Card objects."
+  - name: "Bulk Data"
+    description: "Scryfall provides daily exports of our card data in bulk files. Each of these files is represented as a bulk_data object via the API. URLs for files change their timestamp each day, and can be fetched programmatically."
+  - name: "Application"
+    description: "OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available.Some Scryfall API methods are restricted to valid applications, and registered applications receive increased API limits.In addition, your application can implement an OAuth workflow that allows people with Scryfall accounts to grant your application programatic access to their data."
 paths:
   /sets:
     get:
@@ -233,8 +239,198 @@ paths:
       responses:
         200:
           description: "Ok"
-
-
+  /catalog/card-names:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/artist-names:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/word-bank:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/creature-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/planeswalker-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/land-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/artifact-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/enchantment-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/spell-types:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/powers:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/touighnesses:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/loyalties:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/watermarks:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/keyword-abilities:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/ketword-actions:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /catalog/ability-words:
+    get:
+      tags:
+        - "Catalog"
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: "Ok"
+  /bulk-data:
+    get:
+      tags:
+        - "Bulk Data"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /bulk-data/id:
+    get:
+      tags:
+        - "Bulk Data"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /bulk-data/type:
+    get:
+      tags:
+        - "Bulk Data"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /account:
+    get:
+      tags:
+        - "Application"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /application:
+    get:
+      tags:
+        - "Application"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /oauth/convert:
+    get:
+      tags:
+        - "Application"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /oauth/downgrade:
+    get:
+      tags:
+        - "Application"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
+  /oauth/revoke:
+    get:
+      tags:
+        - "Application"
+      summary: ""
+      responses:
+        200:
+          description: "Ok"
 components:
   schemas:
     Error:
