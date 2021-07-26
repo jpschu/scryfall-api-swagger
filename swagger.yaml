@@ -4,8 +4,8 @@ info:
   title: "Swagger UI Webpack Setup"
   description: "Demonstrates Swagger UI with Webpack including CSS and OAuth"
 servers:
-  - url: "https://demo.identityserver.io/api"
-    description: "Identity Server test API"
+  - url: "https://api.scryfall.com"
+    description: "gfycat api"
 components:
   securitySchemes:
     # See https://demo.identityserver.io/ for configuration details.
@@ -20,9 +20,9 @@ security:
   - identity_server_auth:
     - api
 paths:
-  /test:
+  /cards/random:
     get:
-      summary: "Runs a test request against the Identity Server demo API"
+      summary: "Random Card Bruh"
       responses:
         401:
           description: "Unauthorized"
