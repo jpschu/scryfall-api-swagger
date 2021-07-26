@@ -22,7 +22,20 @@ security:
 paths:
   /cards/random:
     get:
-      summary: "Random Card Bruh"
+      summary: "Returns a single random Card object"
+      parameters:
+        - name: q
+        in: path
+        required: false
+        description: An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded.
+        schema:
+          type: String
+        - name: format
+        in: path
+        required: false
+        description: The data format to return: json, text, or image. Defaults to json.
+        schema:
+          type: String 
       responses:
         401:
           description: "Unauthorized"
