@@ -7,6 +7,8 @@ servers:
   - url: "https://api.scryfall.com"
     description: "gfycat api"
 tags:
+  - name: "Sets"
+    description: ""
   - name: "cards"
     description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
 paths:
@@ -139,3 +141,28 @@ paths:
       responses:
         200:
           description: "Ok"
+components:
+  schemas:
+    Error:
+      description: "An Error object represents a failure to find information or understand the input you provided to the API. Error objects are always transmitted with the appropriate 4XX or 5XX HTTP status code."
+      type: "object"
+      properties:
+        status:
+         description: "An integer HTTP status code for this error."
+         type: "integer"
+        code:
+          description: "A computer-friendly string representing the appropriate HTTP status code."
+          type: "string"
+        details:
+          description: "A human-readable string explaining the error."
+          type: "string"
+        type:
+          description: "A computer-friendly string that provides additional context for the main error. For example, an endpoint many generate HTTP 404 errors for different kinds of input. This field will provide a label for the specific kind of 404 failure, such as ambiguous."
+          type: "string"
+          nullable: true
+        warnings:
+          description: "If your input also generated non-failure warnings, they will be provided as human-readable strings in this array.your input also generated non-failure warnings, they will be provided as human-readable strings in this array."
+          type: "array"
+          nullable: true
+          items:
+            type: "string"
