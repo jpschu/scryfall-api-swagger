@@ -6,9 +6,14 @@ info:
 servers:
   - url: "https://api.scryfall.com"
     description: "gfycat api"
+tags:
+  - name: "cards"
+    description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
 paths:
   /cards/random:
     get:
+      tags:
+        - "cards"
       summary: "Returns a single random Card object"
       parameters:
         - name: q
