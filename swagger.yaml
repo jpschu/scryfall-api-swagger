@@ -1,24 +1,11 @@
 openapi: "3.0.0"
 info:
   version: "0.0.1"
-  title: "Swagger UI Webpack Setup"
-  description: "Demonstrates Swagger UI with Webpack including CSS and OAuth"
+  title: "Scryfall API Documentation"
+  description: "Scryfall provides a REST-like API for ingesting our card data programatically. The API exposes information available on the regular site in easy-to-consume formats."
 servers:
   - url: "https://api.scryfall.com"
     description: "gfycat api"
-components:
-  securitySchemes:
-    # See https://demo.identityserver.io/ for configuration details.
-    identity_server_auth:
-      type: oauth2
-      flows:
-        implicit:
-          authorizationUrl: "https://demo.identityserver.io/connect/authorize"
-          scopes:
-            api: "api"
-security:
-  - identity_server_auth:
-    - api
 paths:
   /cards/random:
     get:
