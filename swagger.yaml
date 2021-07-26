@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Set'
+                $ref: '#/components/schemas/Set_List'
   /sets/{code}:
     get:
       tags:
@@ -590,6 +590,13 @@ components:
           description: "A Scryfall API URI that you can request to begin paginating over the cards in this set."
           type: "string"
           format: "uri"
+    Set_List:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/Set'
   parameters:
     formatJson:
       name: format
