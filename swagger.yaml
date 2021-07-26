@@ -633,6 +633,85 @@ components:
           type: "array"
           items:
             $ref: '#/components/schemas/set'
+    rulings:
+      type: "object"
+      properties:
+        source:
+          description: "A computer-readable string indicating which company produced this ruling, either wotc or scryfall."
+          type: "string"
+        published_at:
+          description: "	The date when the ruling or note was published."
+          type: "string"
+          format: "Date"
+        comment:
+          description: "The text of the ruling."
+          type: "string"
+    rulings_list:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/rulings'
+    card_symbol:
+      type: "object"
+      properties:
+        symbol:
+          description: "The plaintext symbol. Often surrounded with curly braces {}. Note that not all symbols are ASCII text (for example, {∞})."
+          type: "string"
+        loose_variant:
+          description: "An alternate version of this symbol, if it is possible to write it without curly braces."
+          type: "string"
+          nullable: true
+        english:
+          description: "An English snippet that describes this symbol. Appropriate for use in alt text or other accessible communication formats."
+          type: "string"
+        transposable:
+          description: "True if it is possible to write this symbol “backwards”. For example, the official symbol {U/P} is sometimes written as {P/U} or {P\\U} in informal settings. Note that the Scryfall API never writes symbols backwards in other responses. This field is provided for informational purposes."
+          type: "boolean"
+        represents_mana:
+          description: "True if this is a mana symbol."
+          type: "boolean"
+        cmc:
+          description: "A decimal number representing this symbol’s converted mana cost. Note that mana symbols from funny sets can have fractional converted mana costs."
+          type: "number"
+          nullable: true
+        appears_in_mana_costs:
+          description: "True if this symbol appears in a mana cost on any Magic card. For example {20} has this field set to false because {20} only appears in Oracle text, not mana costs."
+          type: "boolean"
+        funny:
+          description: "True if this symbol is only used on funny cards or Un-cards."
+          type: "boolean"
+        colors:
+          description: "An array of colors that this symbol represents."
+          type: "array"
+          items:
+            type: "object" #TODO: Need to add color object here
+        gatherer_alternates:
+          description: "An array of plaintext versions of this symbol that Gatherer uses on old cards to describe original printed text. For example: {W} has [\"oW\", \"ooW\"] as alternates."
+          type: "string"
+          nullable: true
+        svg_uri:
+          description: "A URI to an SVG image of this symbol on Scryfall’s CDNs."
+          type: "string"
+          format: "uri"
+          nullable: true
+    catalog:
+      type: "object"
+      properties:
+        uri:
+          description: "A link to the current catalog on Scryfall’s API."
+          type: "string"
+          format: "uri"
+        total_values:
+          description: "The number of items in the data array."
+          type: "integer"
+        data:
+          description: "An array of datapoints, as strings."
+          type: "array"
+          items:
+            type: "string"
+
   parameters:
     formatJson:
       name: format
