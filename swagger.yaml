@@ -31,7 +31,7 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: "Ok"
+          description: "success"
           content:
             application/json:
               schema:
@@ -52,7 +52,11 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: "Ok"
+          description: "success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
   /sets/tcgplayer/{id}:
     get:
       tags:
@@ -69,7 +73,11 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: "Ok"
+          description: "success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
   /sets/{id}:
     get:
       tags:
@@ -87,7 +95,11 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: "Ok"
+          description: "success"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
   /cards/search:
     get:
       tags:
