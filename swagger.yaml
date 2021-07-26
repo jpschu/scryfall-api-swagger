@@ -36,6 +36,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/set_list'
+        default:
+          description: "error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
   /sets/{code}:
     get:
       tags:
@@ -44,7 +50,7 @@ paths:
       parameters:
         - name: code
           in: path
-          required: True
+          required: true
           description: "The three to five-letter set code."
           schema:
             type: "string"
@@ -57,6 +63,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
+        default:
+          description: "error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
   /sets/tcgplayer/{id}:
     get:
       tags:
@@ -65,7 +77,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: True
+          required: true
           description: "The tcgplayer_id or groupId."
           schema:
             type: "integer"
@@ -78,6 +90,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
+        default:
+          description: "error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
   /sets/{id}:
     get:
       tags:
@@ -86,7 +104,7 @@ paths:
       parameters:
         - name: id
           in: path
-          required: True
+          required: true
           description: "The Scryfall ID."
           schema:
             type: "string"
@@ -100,6 +118,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
+        default:
+          description: "error"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/error'
   /cards/search:
     get:
       tags:
@@ -107,7 +131,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/named:
     get:
       tags:
@@ -115,7 +139,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/autocomplete:
     get:
       tags:
@@ -123,7 +147,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/random:
     get:
       tags:
@@ -172,7 +196,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/code/number/lang:
     get:
       tags:
@@ -180,7 +204,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/multiverse/id:
     get:
       tags:
@@ -188,7 +212,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/mtgo/id:
     get:
       tags:
@@ -196,7 +220,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/arena/id:
     get:
       tags:
@@ -204,7 +228,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/tcgplayer/id:
     get:
       tags:
@@ -212,7 +236,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/cardmarket/id:
     get:
       tags:
@@ -220,7 +244,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/id:
     get:
       tags:
@@ -228,7 +252,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/multiverse/id/rulings:
     get:
       tags:
@@ -236,7 +260,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/mtgo/id/rulings:
     get:
       tags:
@@ -244,7 +268,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/arena/id/rulings:
     get:
       tags:
@@ -252,7 +276,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/code/number/rulings:
     get:
       tags:
@@ -260,7 +284,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /cards/id/rulings:
     get:
       tags:
@@ -268,7 +292,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /symbology:
     get:
       tags:
@@ -276,7 +300,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /symbology/parse-mana:
     get:
       tags:
@@ -284,7 +308,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/card-names:
     get:
       tags:
@@ -292,7 +316,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/artist-names:
     get:
       tags:
@@ -300,7 +324,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/word-bank:
     get:
       tags:
@@ -308,7 +332,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/creature-types:
     get:
       tags:
@@ -316,7 +340,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/planeswalker-types:
     get:
       tags:
@@ -324,7 +348,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/land-types:
     get:
       tags:
@@ -332,7 +356,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/artifact-types:
     get:
       tags:
@@ -340,7 +364,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/enchantment-types:
     get:
       tags:
@@ -348,7 +372,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/spell-types:
     get:
       tags:
@@ -356,7 +380,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/powers:
     get:
       tags:
@@ -364,7 +388,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/touighnesses:
     get:
       tags:
@@ -372,7 +396,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/loyalties:
     get:
       tags:
@@ -380,7 +404,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/watermarks:
     get:
       tags:
@@ -388,7 +412,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/keyword-abilities:
     get:
       tags:
@@ -396,7 +420,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/ketword-actions:
     get:
       tags:
@@ -404,7 +428,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /catalog/ability-words:
     get:
       tags:
@@ -412,7 +436,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /bulk-data:
     get:
       tags:
@@ -420,7 +444,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /bulk-data/id:
     get:
       tags:
@@ -428,7 +452,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /bulk-data/type:
     get:
       tags:
@@ -436,47 +460,47 @@ paths:
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /account:
     get:
       tags:
-        - "Application"
+        - "application"
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /application:
     get:
       tags:
-        - "Application"
+        - "application"
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /oauth/convert:
     get:
       tags:
-        - "Application"
+        - "application"
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /oauth/downgrade:
     get:
       tags:
-        - "Application"
+        - "application"
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
   /oauth/revoke:
     get:
       tags:
-        - "Application"
+        - "application"
       summary: ""
       responses:
         200:
-          description: "Ok"
+          description: "success"
 components:
   schemas:
     error:
