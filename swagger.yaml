@@ -817,288 +817,355 @@ components:
           type: string
           format: uri
         all_parts:
-          description: ""
+          description: "If this card is closely related to other cards, this property will be an array with Related Card Objects."
           type: array
           items:
             type: object #TODO: related card objects
+          nullable: true
         card_faces:
-          description: ""
+          description: "An array of Card Face objects, if this card is multifaced."
           type: array
           items:
             type: object #TODO: card face objects
+          nullable: true
         cmc:
-          description: ""
+          description: "The card’s converted mana cost. Note that some funny cards have fractional mana costs."
           type: number
         color_identity:
-          description: ""
-          type: object #TODO: colors object
+          description: "This card’s color identity."
+          $ref: '#/components/schemas/color_array'
         color_indicator:
-          description: ""
+          description: "The colors in this card’s color indicator, if any. A null value for this field indicates the card does not have one."
           type: object #TODO: colors object
         colors:
-          description: ""
+          description: "This card’s colors, if the overall card has colors defined by the rules. Otherwise the colors will be on the card_faces objects, see below."
           type: object #TODO: colors object
         edhrec_rank:
-          description: ""
+          description: "This card’s overall rank/popularity on EDHREC. Not all cards are ranked."
           type: integer
+          nullable: true
         foil:
-          description: ""
+          description: "True if this printing exists in a foil version."
           type: boolean
         hand_modifier:
-          description: ""
+          description: "This card’s hand modifier, if it is Vanguard card. This value will contain a delta, such as -1."
           type: string
+          nullable: true
         keywords:
-          description: ""
+          description: "An array of keywords that this card uses, such as 'Flying' and 'Cumulative upkeep'."
           type: array
           items:
             type: string
         layout:
-          description: ""
+          description: "A code for this card’s layout."
           type: string
         legalities:
-          description: ""
+          description: "An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned."
           type: object #TODO: legality object
         life_modifier:
-          description: ""
+          description: "This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2."
           type: string
         loyalty:
-          description: ""
+          description: "This loyalty if any. Note that some cards have loyalties that are not numeric, such as X."
           type: string
         mana_cost:
-          description: ""
+          description: "The mana cost for this card. This value will be any empty string \"\" if the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values. Multi-faced cards will report this value in card faces."
           type: string
         name:
-          description: ""
+          description: "The name of this card. If this card has multiple faces, this field will contain both names separated by ␣//␣."
           type: string
         nonfoil:
-          description: ""
+          description: "True if this printing exists in a nonfoil version."
           type: boolean
         oracle_text:
-          description: ""
+          description: "The Oracle text for this card, if any."
           type: string
+          nullable: true
         oversized:
-          description: ""
+          description: "True if this card is oversized."
           type: boolean
         power:
-          description: ""
+          description: "This card’s power, if any. Note that some cards have powers that are not numeric, such as *."
           type: string
         produced_mana:
-          description: ""
+          description: "Colors of mana that this card could produce."
           type: object #TODO: colors
+          nullable: true
         reserved:
-          description: ""
+          description: "True if this card is on the Reserved List."
           type: boolean
         toughness:
-          description: ""
+          description: "This card’s toughness, if any. Note that some cards have toughnesses that are not numeric, such as *."
           type: string
+          nullable: true
         type_line:
-          description: ""
+          description: "The type line of this card."
           type: string
         artist:
-          description: ""
+          description: "The name of the illustrator of this card. Newly spoiled cards may not have this field yet."
           type: string
+          nullable: true
         booster:
-          description: ""
+          description: "Whether this card is found in boosters."
           type: boolean
         border_color:
-          description: ""
+          description: "This card’s border color: black, white, borderless, silver, or gold."
           type: string
         card_back_id:
-          description: ""
+          description: "The Scryfall ID for the card back design present on this card."
           type: string
           format: uuid
         collector_number:
-          description: ""
+          description: "This card’s collector number. Note that collector numbers can contain non-numeric characters, such as letters or ★."
           type: string
         content_warning:
-          description: ""
+          description: "True if you should consider avoiding use of this print downstream."
           type: boolean
+          nullable: true
         digital:
-          description: ""
+          description: "True if this card was only released in a video game."
           type: boolean
         flavor_name:
-          description: ""
+          description: "The just-for-fun name printed on the card (such as for Godzilla series cards)."
           type: string
+          nullable: true
         flavor_text:
-          description: ""
+          description: "The flavor text, if any."
           type: string
+          nullable: true
         frame_effects:
-          description: ""
+          description: "This card’s frame effects, if any."
           type: array
           items:
             type: string
+          nullable: true
         frame:
-          description: ""
+          description: "This card’s frame layout."
           type: string
         full_art:
-          description: ""
+          description: "True if this card’s artwork is larger than normal."
           type: boolean
         games:
-          description: ""
+          description: "A list of games that this card print is available in, paper, arena, and/or mtgo."
           type: array
           items:
             type: string
         highres_image:
-          description: ""
+          description: "True if this card’s imagery is high resolution."
           type: boolean
         illustration_id:
-          description: ""
+          description: "A unique identifier for the card artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
           type: string
           format: uuid
         image_status:
-          description: ""
+          description: "A computer-readable indicator for the state of this card’s image, one of missing, placeholder, lowres, or highres_scan."
           type: string
         image_uris:
-          description: ""
+          description: "An object listing available imagery for this card. See the Card Imagery article for more information."
           type: object #TODO: card imagery object
+          nullable: true
         prices:
-          description: ""
+          description: "An object containing daily price information for this card, including usd, usd_foil, eur, and tix prices, as strings."
           type: object #TODO: prices object
         printed_name:
-          description: ""
+          description: "The localized name printed on this card, if any."
           type: string
+          nullable: true
         printed_text:
-          description: ""
+          description: "The localized text printed on this card, if any."
           type: string
+          nullable: true
         printed_type_line:
-          description: ""
+          description: "The localized type line printed on this card, if any."
           type: string
+          nullable: true
         promo:
-          description: ""
+          description: "True if this card is a promotional print."
           type: boolean
         promo_types:
-          description: ""
+          description: "An array of strings describing what categories of promo cards this card falls into."
           type: array
           items:
             type: string
+          nullable: true
         purchase_uris:
-          description: ""
+          description: "An object providing URIs to this card’s listing on major marketplaces."
           type: object #TODO: purchase uri objects
         rarity:
-          description: ""
+          description: "This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus."
           type: string
         related_uris:
-          description: ""
+          description: "An object providing URIs to this card’s listing on other Magic: The Gathering online resources."
           type: object #TODO: related uris object
         released_at:
-          description: ""
+          description: "The date this card was first released."
           type: string
           format: date
         reprint:
-          description: ""
+          description: "True if this card is a reprint."
           type: boolean
         scryfall_set_uri:
-          description: ""
+          description: "A link to this card’s set on Scryfall’s website."
           type: string
           format: uri
         set_name:
-          description: ""
+          description: "This card’s full set name."
           type: string
         set_search_uri:
-          description: ""
+          description: "A link to where you can begin paginating this card’s set on the Scryfall API."
           type: string
           format: uri
         set_type:
-          description: ""
+          description: "The type of set this printing is in."
           type: string
         set_uri:
-          description: ""
+          description: "A link to this card’s set object on Scryfall’s API."
           type: string
           format: uri
         set:
-          description: ""
+          description: "This card’s set code."
           type: string
         set_id:
-          description: ""
+          description: "This card’s Set object UUID."
           type: string
         story_spotlight:
-          description: ""
+          description: "True if this card is a Story Spotlight."
           type: boolean
         textless:
-          description: ""
+          description: "True if the card is printed without text."
           type: boolean
         variation:
-          description: ""
+          description: "Whether this card is a variation of another printing."
           type: boolean
         variation_of:
-          description: ""
+          description: "The printing ID of the printing this card is a variation of."
           type: string
           format: uuid
+          nullable: true
         watermark:
-          description: ""
+          description: "This card’s watermark, if any."
           type: string
+          nullable: true
         preview.previewed_at:
-          description: ""
+          description: "The date this card was previewed."
           type: string
           format: date
+          nullable: true
         preview.source_uri:
-          description: ""
+          description: "A link to the preview for this card."
           type: string
           format: uri
+          nullable: true
         preview.source:
-          description: ""
+          description: "The name of the source that previewed this card."
           type: string
+          nullable: true
     card_face:
       type: object
       properties:
         artist:
-          description: ""
+          description: "The name of the illustrator of this card face. Newly spoiled cards may not have this field yet."
           type: string
+          nullable: true
         color_indicator:
-          description: ""
+          description: "The colors in this face’s color indicator, if any."
           type: object #TODO: colors object
+          nullable: true
         colors:
-          description: ""
+          description: "This face’s colors, if the game defines colors for the individual face of this card."
           type: string #TODO: colors object
+          nullable: true
         flavor_text:
-          description: ""
+          description: "The flavor text printed on this face, if any."
           type: string
+          nullable: true
         illustration_id:
-          description: ""
+          description: "A unique identifier for the card face artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
           type: string
           format: uuid
+          nullable: true
         image_uris:
-          description: ""
+          description: "An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead."
           type: object #TODO: image uri object
+          nullable: true
         loyality:
-          description: ""
+          description: "This face’s loyalty, if any."
           type: string
+          nullable: true
         mana_cost:
-          description: ""
+          description: "The mana cost for this face. This value will be any empty string \"\" if the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values."
           type: string
         name:
-          description: ""
+          description: "The name of this particular face."
           type: string
         object:
-          description: ""
+          description: "A content type for this object, always card_face."
           type: string
         oracle_text:
-          description: ""
+          description: "The Oracle text for this face, if any."
           type: string
+          nullable: true
         power:
-          description: ""
+          description: "This face’s power, if any. Note that some cards have powers that are not numeric, such as *."
           type: string
+          nullable: true
         printed_name:
-          description: ""
+          description: "The localized name printed on this face, if any."
           type: string
+          nullable: true
         printed_text:
-          description: ""
+          description: "The localized text printed on this face, if any."
           type: string
+          nullable: true
         printed_type_line:
-          description: ""
+          description: "The localized type line printed on this face, if any."
           type: string
+          nullable: true
         toughness:
-          description: ""
+          description: "This face’s toughness, if any."
           type: string
+          nullable: true
         type_line:
-          description: ""
+          description: "The type line of this particular face."
           type: string
         watermark:
-          description: ""
+          description: "The watermark on this particulary card face, if any."
           type: string
-
-
-
+          nullable: true
+    related_card:
+      type: object
+      properties:
+        id:
+          description: "An unique ID for this card in Scryfall’s database."
+          type: string
+          format: uuid
+        object:
+          description: "A content type for this object, always related_card."
+          type: string
+        component:
+          description: "A field explaining what role this card plays in this relationship, one of token, meld_part, meld_result, or combo_piece."
+          type: string
+        name:
+          description: "The name of this particular related card."
+          type: string
+        type_line:
+          description: "The type line of this card."
+          type: string
+        uri:
+          description: "A URI where you can retrieve a full object describing this card on Scryfall’s API."
+          type: string
+          format: uri
+    color_array:
+      type: array
+      items:
+        type: string
+      description: >
+            Colors:
+             * `W` - White
+             * `U` - Blue
+             * `B` - Black
+             * `R` - Red
+             * `G` - Green
 
 
   parameters:
