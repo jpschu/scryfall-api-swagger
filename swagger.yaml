@@ -711,18 +711,63 @@ components:
           type: "array"
           items:
             type: "string"
+    bulk_data:
+      type: "object"
+      properties:
+        id:
+          description: ""
+          type: "string"
+          format: "uuid"
+        uri:
+          description: ""
+          type: "string"
+          format: "uri"
+        type:
+          description: ""
+          type: "string"
+        name:
+          description: ""
+          type: "string"
+        description:
+          description: ""
+          type: "string"
+        download_uri:
+          description: ""
+          type: "string"
+          format: "uri"
+        updated_at:
+          description: ""
+          type: "string"
+          format: "date-time"
+        compressed_size:
+          description: ""
+          type: "integer"
+        content_type:
+          description: "The MIME type of this file. ex: \"application/json\""
+          type: "string"
+        content_encoding:
+          description: "The Content-Encoding encoding that will be used to transmit this file when you download it. ex. \"gzip\""
+          type: "string"
+    bulk_data_list:
+      type: "object"
+      properties:
+        data:
+          type: "array"
+          items:
+            $ref: '#/components/schemas/bulk_data'
+
 
   parameters:
     formatJson:
-      name: format
-      in: query
+      name: "format"
+      in: "query"
       required: false
       description: "The data format to return. This method only supports json."
       schema:
         type: "string"
     prettyJson:
       name: "pretty"
-      in: query
+      in: "query"
       required: false
       description: "If true, the returned JSON will be prettified. Avoid using for production code."
       schema:
