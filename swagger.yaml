@@ -31,13 +31,13 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: Success
+          description: success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/set_list'
         default:
-          description: "error"
+          description: error
           content:
             application/json:
               schema:
@@ -58,13 +58,13 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: Success
+          description: success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: "error"
+          description: error
           content:
             application/json:
               schema:
@@ -85,13 +85,13 @@ paths:
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: Success
+          description: success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: "error"
+          description: error
           content:
             application/json:
               schema:
@@ -108,18 +108,18 @@ paths:
           description: "The Scryfall ID."
           schema:
             type: string
-            format: "uuid"
+            format: uuid
         - $ref: '#/components/parameters/formatJson'
         - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
-          description: Success
+          description: success
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: "error"
+          description: error
           content:
             application/json:
               schema:
@@ -131,7 +131,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/named:
     get:
       tags:
@@ -139,7 +139,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/autocomplete:
     get:
       tags:
@@ -147,7 +147,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/random:
     get:
       tags:
@@ -196,7 +196,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/code/number/lang:
     get:
       tags:
@@ -204,7 +204,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/multiverse/id:
     get:
       tags:
@@ -212,7 +212,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/mtgo/id:
     get:
       tags:
@@ -220,7 +220,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/arena/id:
     get:
       tags:
@@ -228,7 +228,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/tcgplayer/id:
     get:
       tags:
@@ -236,7 +236,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/cardmarket/id:
     get:
       tags:
@@ -244,7 +244,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/id:
     get:
       tags:
@@ -252,7 +252,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/multiverse/id/rulings:
     get:
       tags:
@@ -260,7 +260,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/mtgo/id/rulings:
     get:
       tags:
@@ -268,7 +268,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/arena/id/rulings:
     get:
       tags:
@@ -276,7 +276,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/code/number/rulings:
     get:
       tags:
@@ -284,7 +284,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /cards/id/rulings:
     get:
       tags:
@@ -292,7 +292,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /symbology:
     get:
       tags:
@@ -300,7 +300,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /symbology/parse-mana:
     get:
       tags:
@@ -308,7 +308,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/card-names:
     get:
       tags:
@@ -316,7 +316,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/artist-names:
     get:
       tags:
@@ -324,7 +324,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/word-bank:
     get:
       tags:
@@ -332,7 +332,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/creature-types:
     get:
       tags:
@@ -340,7 +340,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/planeswalker-types:
     get:
       tags:
@@ -348,7 +348,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/land-types:
     get:
       tags:
@@ -356,7 +356,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/artifact-types:
     get:
       tags:
@@ -364,7 +364,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/enchantment-types:
     get:
       tags:
@@ -372,7 +372,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/spell-types:
     get:
       tags:
@@ -380,7 +380,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/powers:
     get:
       tags:
@@ -388,7 +388,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/touighnesses:
     get:
       tags:
@@ -396,7 +396,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/loyalties:
     get:
       tags:
@@ -404,7 +404,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/watermarks:
     get:
       tags:
@@ -412,7 +412,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/keyword-abilities:
     get:
       tags:
@@ -420,7 +420,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/ketword-actions:
     get:
       tags:
@@ -428,7 +428,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /catalog/ability-words:
     get:
       tags:
@@ -436,7 +436,7 @@ paths:
       summary: "Returns a single random Card object"
       responses:
         200:
-          description: Success
+          description: success
   /bulk-data:
     get:
       tags:
@@ -444,7 +444,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /bulk-data/id:
     get:
       tags:
@@ -452,7 +452,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /bulk-data/type:
     get:
       tags:
@@ -460,7 +460,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /account:
     get:
       tags:
@@ -468,7 +468,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /application:
     get:
       tags:
@@ -476,7 +476,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /oauth/convert:
     get:
       tags:
@@ -484,7 +484,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /oauth/downgrade:
     get:
       tags:
@@ -492,7 +492,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
   /oauth/revoke:
     get:
       tags:
@@ -500,7 +500,7 @@ paths:
       summary: ""
       responses:
         200:
-          description: Success
+          description: success
 components:
   schemas:
     error:
@@ -560,7 +560,7 @@ components:
         id:
           description: "A unique ID for this set on Scryfall that will not change."
           type: string
-          format: "uuid"
+          format: uuid
         code:
           description: "The unique three to five-letter code for this set."
           type: string
@@ -717,7 +717,7 @@ components:
         id:
           description: ""
           type: string
-          format: "uuid"
+          format: uuid
         uri:
           description: ""
           type: string
@@ -757,6 +757,348 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/bulk_data'
+    card:
+      type: object
+      properties:
+        arena_id:
+          description: "This card’s Arena ID, if any. A large percentage of cards are not available on Arena and do not have this ID."
+          type: integer
+          nullable: true
+        id:
+          description: "A unique ID for this card in Scryfall’s database."
+          type: string
+          format: uuid
+        lang:
+          description: "A language code for this printing."
+          type: string
+        mtgo_id:
+          description: "This card’s Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+          type: integer
+          nullable: true
+        mtgo_foil_id:
+          description: "This card’s foil Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+          type: integer
+          nullable: true
+        multiverse_ids:
+          description: "This card’s multiverse IDs on Gatherer, if any, as an array of integers. Note that Scryfall includes many promo cards, tokens, and other esoteric objects that do not have these identifiers."
+          type: array
+          items:
+            type: integer
+          nullable: true
+        tcgplayer_id:
+          description: "This card’s ID on TCGplayer’s API, also known as the productId."
+          type: integer
+          nullable: true
+        cardmarket_id:
+          description: "This card’s ID on Cardmarket’s API, also known as the idProduct."
+          type: integer
+          nullable: true
+        object:
+          description: "A content type for this object, always card."
+          type: string
+        oracle_id:
+          description: "A unique ID for this card’s oracle identity. This value is consistent across reprinted card editions, and unique among different cards with the same name (tokens, Unstable variants, etc)."
+          type: string
+          format: uuid
+        prints_search_uri:
+          description: "A link to where you can begin paginating all re/prints for this card on Scryfall’s API."
+          type: string
+          format: uri
+        rulings_uri:
+          description: "A link to this card’s rulings list on Scryfall’s API."
+          type: string
+          format: uri
+        scryfall_uri:
+          description: "A link to this card’s permapage on Scryfall’s website."
+          type: string
+          format: uri
+        uri:
+          description: "A link to this card object on Scryfall’s API."
+          type: string
+          format: uri
+        all_parts:
+          description: ""
+          type: array
+          items:
+            type: object #TODO: related card objects
+        card_faces:
+          description: ""
+          type: array
+          items:
+            type: object #TODO: card face objects
+        cmc:
+          description: ""
+          type: number
+        color_identity:
+          description: ""
+          type: object #TODO: colors object
+        color_indicator:
+          description: ""
+          type: object #TODO: colors object
+        colors:
+          description: ""
+          type: object #TODO: colors object
+        edhrec_rank:
+          description: ""
+          type: integer
+        foil:
+          description: ""
+          type: boolean
+        hand_modifier:
+          description: ""
+          type: string
+        keywords:
+          description: ""
+          type: array
+          items:
+            type: string
+        layout:
+          description: ""
+          type: string
+        legalities:
+          description: ""
+          type: object #TODO: legality object
+        life_modifier:
+          description: ""
+          type: string
+        loyalty:
+          description: ""
+          type: string
+        mana_cost:
+          description: ""
+          type: string
+        name:
+          description: ""
+          type: string
+        nonfoil:
+          description: ""
+          type: boolean
+        oracle_text:
+          description: ""
+          type: string
+        oversized:
+          description: ""
+          type: boolean
+        power:
+          description: ""
+          type: string
+        produced_mana:
+          description: ""
+          type: object #TODO: colors
+        reserved:
+          description: ""
+          type: boolean
+        toughness:
+          description: ""
+          type: string
+        type_line:
+          description: ""
+          type: string
+        artist:
+          description: ""
+          type: string
+        booster:
+          description: ""
+          type: boolean
+        border_color:
+          description: ""
+          type: string
+        card_back_id:
+          description: ""
+          type: string
+          format: uuid
+        collector_number:
+          description: ""
+          type: string
+        content_warning:
+          description: ""
+          type: boolean
+        digital:
+          description: ""
+          type: boolean
+        flavor_name:
+          description: ""
+          type: string
+        flavor_text:
+          description: ""
+          type: string
+        frame_effects:
+          description: ""
+          type: array
+          items:
+            type: string
+        frame:
+          description: ""
+          type: string
+        full_art:
+          description: ""
+          type: boolean
+        games:
+          description: ""
+          type: array
+          items:
+            type: string
+        highres_image:
+          description: ""
+          type: boolean
+        illustration_id:
+          description: ""
+          type: string
+          format: uuid
+        image_status:
+          description: ""
+          type: string
+        image_uris:
+          description: ""
+          type: object #TODO: card imagery object
+        prices:
+          description: ""
+          type: object #TODO: prices object
+        printed_name:
+          description: ""
+          type: string
+        printed_text:
+          description: ""
+          type: string
+        printed_type_line:
+          description: ""
+          type: string
+        promo:
+          description: ""
+          type: boolean
+        promo_types:
+          description: ""
+          type: array
+          items:
+            type: string
+        purchase_uris:
+          description: ""
+          type: object #TODO: purchase uri objects
+        rarity:
+          description: ""
+          type: string
+        related_uris:
+          description: ""
+          type: object #TODO: related uris object
+        released_at:
+          description: ""
+          type: string
+          format: date
+        reprint:
+          description: ""
+          type: boolean
+        scryfall_set_uri:
+          description: ""
+          type: string
+          format: uri
+        set_name:
+          description: ""
+          type: string
+        set_search_uri:
+          description: ""
+          type: string
+          format: uri
+        set_type:
+          description: ""
+          type: string
+        set_uri:
+          description: ""
+          type: string
+          format: uri
+        set:
+          description: ""
+          type: string
+        set_id:
+          description: ""
+          type: string
+        story_spotlight:
+          description: ""
+          type: boolean
+        textless:
+          description: ""
+          type: boolean
+        variation:
+          description: ""
+          type: boolean
+        variation_of:
+          description: ""
+          type: string
+          format: uuid
+        watermark:
+          description: ""
+          type: string
+        preview.previewed_at:
+          description: ""
+          type: string
+          format: date
+        preview.source_uri:
+          description: ""
+          type: string
+          format: uri
+        preview.source:
+          description: ""
+          type: string
+    card_face:
+      type: object
+      properties:
+        artist:
+          description: ""
+          type: string
+        color_indicator:
+          description: ""
+          type: object #TODO: colors object
+        colors:
+          description: ""
+          type: string #TODO: colors object
+        flavor_text:
+          description: ""
+          type: string
+        illustration_id:
+          description: ""
+          type: string
+          format: uuid
+        image_uris:
+          description: ""
+          type: object #TODO: image uri object
+        loyality:
+          description: ""
+          type: string
+        mana_cost:
+          description: ""
+          type: string
+        name:
+          description: ""
+          type: string
+        object:
+          description: ""
+          type: string
+        oracle_text:
+          description: ""
+          type: string
+        power:
+          description: ""
+          type: string
+        printed_name:
+          description: ""
+          type: string
+        printed_text:
+          description: ""
+          type: string
+        printed_type_line:
+          description: ""
+          type: string
+        toughness:
+          description: ""
+          type: string
+        type_line:
+          description: ""
+          type: string
+        watermark:
+          description: ""
+          type: string
+
+
+
 
 
   parameters:
