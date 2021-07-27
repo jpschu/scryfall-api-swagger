@@ -37,11 +37,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/set_list'
         default:
-          description: error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+          $ref: '#/components/responses/default'
   /sets/{code}:
     get:
       tags:
@@ -64,11 +60,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+          $ref: '#/components/responses/default'
   /sets/tcgplayer/{id}:
     get:
       tags:
@@ -91,11 +83,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+          $ref: '#/components/responses/default'
   /sets/{id}:
     get:
       tags:
@@ -119,11 +107,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/set'
         default:
-          description: error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/error'
+          $ref: '#/components/responses/default'
   /cards/search:
     get:
       tags:
@@ -1300,3 +1284,10 @@ components:
       description: "If true, the returned JSON will be prettified. Avoid using for production code."
       schema:
         type: boolean
+  responses:
+    default:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
