@@ -1160,12 +1160,16 @@ components:
       items:
         type: string
       description: >
-            Colors:
-             * `W` - White
-             * `U` - Blue
-             * `B` - Black
-             * `R` - Red
-             * `G` - Green
+            Available Colors:
+             * `"W"` - White
+
+             * `"U"` - Blue
+
+             * `"B"` - Black
+             
+             * `"R"` - Red
+
+             * `"G"` - Green
 
 
   parameters:
