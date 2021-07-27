@@ -112,83 +112,260 @@ paths:
     get:
       tags:
         - cards
-      summary: "Returns a single random Card object"
+      summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation for paginating the List type and and the Error type type to understand all of the possible output from this method. If only one card is found, this method will still return a List." #TODO: this section had a lot of extra info to add
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: "A fulltext search query. Make sure that your parameter is properly encoded."
+        schema:
+          type: string
+      - name: unique
+        in: query
+        description: "The strategy for omitting similar cards. See below."
+        schema:
+          type: string
+      - name: dir
+        in: query
+        description: "The direction to sort cards. See below."
+        schema:
+          type: string
+      - name: include_extras
+        in: query
+        description: "If true, extra cards (tokens, planes, etc) will be included. Equivalent to adding include:extras to the fulltext search. Defaults to false."
+        schema:
+          type: boolean
+      - name: include_multilingual
+        in: query
+        description: "If true, cards in every language supported by Scryfall will be included. Defaults to false."
+        schema:
+          type: boolean
+      - name: include_variations
+        in: query
+        description: "If true, rare care variants will be included, like the Hairy Runesword. Defaults to false."
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        description: "The page number to return"
+        schema:
+          type: integer
+          default: 1
+      - $ref: '#/components/parameters/formatJson'
+      - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
           description: success
-  /cards/named:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/autocomplete:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/random:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/card_list'
+        default:
+          $ref: '#/components/responses/default'
+  /cards/named: #TODO: add extra help text
     get:
       tags:
         - cards
       summary: "Returns a single random Card object"
       parameters:
+      - name: exact
+        in: query
+        description: "The exact card name to search for, case insenstive."
+        required: true
+        schema:
+          type: string
+      - name: fuzzy
+        in: query
+        description: "A fuzzy card name to search for."
+        required: true
+        schema:
+          type: string
+      - name: set
+        in: query
+        description: "A set code to limit the search to one set."
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: "The data format to return: \"json\", \"text\", or \"image\""
+        schema:
+          type: string
+          default: "json"
+      - name: face
+        in: query
+        description: "If using the image format and this parameter has the value \"back\", the back face of the card will be returned. Will return a 422 if this card has no back face."
+        schema:
+          type: string
+      - name: version
+        in: query
+        description: "The image version to return when using the image format: \"small\", \"normal\", \"large\", \"png\", \"art_crop\", or \"border_crop\". Defaults to \"large\""
+        schema:
+          type: string
+      - $ref: '#/components/parameters/prettyJson'
+      responses:
+        200:
+          description: success
+          content:
+            application/json: #TODO: add other formats from above: text and image
+              schema:
+                $ref: '#/components/schemas/card'
+        default:
+          $ref: '#/components/responses/default'
+  /cards/autocomplete:
+    get:
+      tags:
+        - cards
+      summary: "Returns a Catalog object containing up to 20 full English card names that could be autocompletions of the given string parameter. This method is designed for creating assistive UI elements that allow users to free-type card names. The names are sorted with the nearest match first, highly favoring results that begin with your given string. Spaces, punctuation, and capitalization are ignored. If q is less than 2 characters long, or if no names match, the Catalog will contain 0 items (instead of returning any errors)."
+      parameters:
+      - name: q
+        in: query
+        description: "The string to autocomplete."
+        required: true
+        schema:
+          type: string
+      - name: include_extras
+        in: query
+        description: "If true, extra cards (tokens, planes, vanguards, etc) will be included."
+        schema:
+          type: boolean
+          default: false
+      - $ref: '#/components/parameters/formatJson'
+      - $ref: '#/components/parameters/prettyJson'
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/catalog'
+        default:
+          $ref: '#/components/responses/default'
+  /cards/random:
+    get:
+      tags:
+        - cards
+      summary: "Returns a single random Card object. The optional parameter q supports the same fulltext search system that the main site uses. Providing q will filter the pool of cards before returning a random entry."
+      parameters:
         - name: q
           in: query
-          required: false
-          description: An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded.
+          description: "An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded."
           schema:
             type: string
         - name: format
           in: query
-          required: false
-          description: The data format to return json, text, or image. Defaults to json.
+          description: "The data format to return json, text, or image. Defaults to json."
           schema:
             type: string
         - name: face
           in: query
-          required: false
-          description: If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face.
+          description: "If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face."
           schema:
             type: string
         - name: version
           in: query
-          required: false
-          description: The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large.
+          description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
           schema:
             type: string
-        - name: pretty
-          in: query
-          required: false
-          description: If true, the returned JSON will be prettified. Avoid using for production code.
-          schema:
-            type: boolean
+        - $ref: '#/components/parameters/prettyJson'
       responses:
-        401:
-          description: "Unauthorized"
         200:
-          description: "OK"
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/card'
+        default:
+          $ref: '#/components/responses/default'
   /cards/collection:
-    get:
+    post:
       tags:
         - cards
-      summary: "Returns a single random Card object"
+      summary: "Accepts a JSON array of card identifiers, and returns a List object with the collection of requested cards. A maximum of 75 card references may be submitted per request. The request must be posted with Content-Type as application/json." #TODO: add card identifiers and double check post and post schema
+      requestBody:
+        description: "An object with an array of JSON objects, each one a card identifier."
+        content:
+          application/json:
+            schema:
+              type: string
+      parameters:
+        - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
           description: success
-  /cards/code/number/lang:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/post_card_list'
+        default:
+          $ref: '#/components/responses/default'
+  /cards/{code}/{number}:
     get:
       tags:
         - cards
-      summary: "Returns a single random Card object"
+      summary: "Returns a single card with the given set code and collector number. You may optionally also append a lang part to the URL to retrieve a non-English version of the card."
+      parameters:
+        - name: code
+          in: path
+          description: "The three to five-letter set code."
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          description: "The collector number."
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/formatMulti'
+        - $ref: '#/components/parameters/face'
+        - $ref: '#/components/parameters/version'
+        - $ref: '#/components/parameters/prettyJson'
       responses:
         200:
           description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/card'
+        default:
+          $ref: '#/components/responses/default'
+  /cards/{code}/{number}/{lang}:
+    get:
+      tags:
+        - cards
+      summary: "Returns a single card with the given set code and collector number. You may optionally also append a lang part to the URL to retrieve a non-English version of the card."
+      parameters:
+        - name: code
+          in: path
+          description: "The three to five-letter set code."
+          required: true
+          schema:
+            type: string
+        - name: number
+          in: path
+          description: "The collector number."
+          required: true
+          schema:
+            type: string
+        - name: lang
+          in: path
+          description: "The 2-3 character language code."
+          required: true
+          schema:
+            type: string #TODO: language data type
+        - $ref: '#/components/parameters/formatMulti'
+        - $ref: '#/components/parameters/face'
+        - $ref: '#/components/parameters/version'
+        - $ref: '#/components/parameters/prettyJson'
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/card'
+        default:
+          $ref: '#/components/responses/default'
   /cards/multiverse/id:
     get:
       tags:
@@ -605,7 +782,7 @@ components:
           type: string
           format: uri
 
-    rulings:
+    ruling:
       type: object
       properties:
         source:
@@ -1116,15 +1293,36 @@ components:
       type: object
       properties:
         object:
-          $ref: '#/components/properties/object_list'
+          $ref: '#/components/schemas/object_list'
         has_more:
-          $ref: '#/components/properties/has_more'
+          $ref: '#/components/schemas/has_more'
         next_page:
-          $ref: '#/components/properties/next_page'
+          $ref: '#/components/schemas/next_page'
         total_cards:
-          $ref: '#/components/properties/total_cards'
+          $ref: '#/components/schemas/total_cards'
         warnings:
-          $ref: '#/components/properties/warnings'
+          $ref: '#/components/schemas/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/card'
+    post_card_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/schemas/object_list'
+        not_found:
+          type: array
+          items:
+            type: string
+        has_more:
+          $ref: '#/components/schemas/has_more'
+        next_page:
+          $ref: '#/components/schemas/next_page'
+        total_cards:
+          $ref: '#/components/schemas/total_cards'
+        warnings:
+          $ref: '#/components/schemas/warnings'
         data:
           type: array
           items:
@@ -1133,49 +1331,49 @@ components:
       type: object
       properties:
         object:
-          $ref: '#/components/properties/object_list'
+          $ref: '#/components/schemas/object_list'
         has_more:
-          $ref: '#/components/properties/has_more'
+          $ref: '#/components/schemas/has_more'
         next_page:
-          $ref: '#/components/properties/next_page'
+          $ref: '#/components/schemas/next_page'
         total_cards:
-          $ref: '#/components/properties/total_cards'
+          $ref: '#/components/schemas/total_cards'
         warnings:
-          $ref: '#/components/properties/warnings'
+          $ref: '#/components/schemas/warnings'
         data:
           type: array
           items:
             $ref: '#/components/schemas/set'
-    rulings_list:
+    ruling_list:
       type: object
       properties:
         object:
-          $ref: '#/components/properties/object_list'
+          $ref: '#/components/schemas/object_list'
         has_more:
-          $ref: '#/components/properties/has_more'
+          $ref: '#/components/schemas/has_more'
         next_page:
-          $ref: '#/components/properties/next_page'
+          $ref: '#/components/schemas/next_page'
         total_cards:
-          $ref: '#/components/properties/total_cards'
+          $ref: '#/components/schemas/total_cards'
         warnings:
-          $ref: '#/components/properties/warnings'
+          $ref: '#/components/schemas/warnings'
         data:
           type: array
           items:
-            $ref: '#/components/schemas/rulings'
+            $ref: '#/components/schemas/ruling'
     card_symbol_list:
       type: object
       properties:
         object:
-          $ref: '#/components/properties/object_list'
+          $ref: '#/components/schemas/object_list'
         has_more:
-          $ref: '#/components/properties/has_more'
+          $ref: '#/components/schemas/has_more'
         next_page:
-          $ref: '#/components/properties/next_page'
+          $ref: '#/components/schemas/next_page'
         total_cards:
-          $ref: '#/components/properties/total_cards'
+          $ref: '#/components/schemas/total_cards'
         warnings:
-          $ref: '#/components/properties/warnings'
+          $ref: '#/components/schemas/warnings'
         data:
           type: array
           items:
@@ -1184,15 +1382,15 @@ components:
       type: object
       properties:
         object:
-          $ref: '#/components/properties/object_list'
+          $ref: '#/components/schemas/object_list'
         has_more:
-          $ref: '#/components/properties/has_more'
+          $ref: '#/components/schemas/has_more'
         next_page:
-          $ref: '#/components/properties/next_page'
+          $ref: '#/components/schemas/next_page'
         total_cards:
-          $ref: '#/components/properties/total_cards'
+          $ref: '#/components/schemas/total_cards'
         warnings:
-          $ref: '#/components/properties/warnings'
+          $ref: '#/components/schemas/warnings'
         data:
           type: array
           items:
@@ -1351,30 +1549,6 @@ components:
         - promo
         - token
         - memorabilia
-
-  parameters:
-    formatJson:
-      name: format
-      in: query
-      required: false
-      description: "The data format to return. This method only supports json."
-      schema:
-        type: string
-    prettyJson:
-      name: pretty
-      in: query
-      required: false
-      description: "If true, the returned JSON will be prettified. Avoid using for production code."
-      schema:
-        type: boolean
-  responses:
-    default:
-      description: error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/error'
-  properties:
     #The following are properties resused for the List Object
     object_list:
       type: string
@@ -1397,3 +1571,44 @@ components:
       nullable: true
       items:
         type: string
+
+  parameters:
+    formatJson:
+      name: format
+      in: query
+      required: false
+      description: "The data format to return. This method only supports json."
+      schema:
+        type: string
+    prettyJson:
+      name: pretty
+      in: query
+      required: false
+      description: "If true, the returned JSON will be prettified. Avoid using for production code."
+      schema:
+        type: boolean
+    formatMulti:
+      name: format
+      in: query
+      description: "The data format to return json, text, or image. Defaults to json."
+      schema:
+        type: string
+    face:
+      name: face
+      in: query
+      description: "If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face."
+      schema:
+        type: string
+    version:
+      name: version
+      in: query
+      description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
+      schema:
+        type: string
+  responses:
+    default:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
