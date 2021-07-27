@@ -818,13 +818,13 @@ components:
           description: "If this card is closely related to other cards, this property will be an array with Related Card Objects."
           type: array
           items:
-            type: object #TODO: related card objects
+            $ref: '#/components/schemas/related_card'
           nullable: true
         card_faces:
           description: "An array of Card Face objects, if this card is multifaced."
           type: array
           items:
-            type: object #TODO: card face objects
+            $ref: '#/components/schemas/card_face'
           nullable: true
         cmc:
           description: "The card’s converted mana cost. Note that some funny cards have fractional mana costs."
@@ -859,7 +859,7 @@ components:
           type: string
         legalities:
           description: "An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned."
-          type: object #TODO: legality object
+          $ref: '#/components/schemas/legalities'
         life_modifier:
           description: "This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2."
           type: string
@@ -960,11 +960,11 @@ components:
           type: string
         image_uris:
           description: "An object listing available imagery for this card. See the Card Imagery article for more information."
-          type: object #TODO: card imagery object
+          $ref: '#/components/schemas/image_uris'
           nullable: true
         prices:
           description: "An object containing daily price information for this card, including usd, usd_foil, eur, and tix prices, as strings."
-          type: object #TODO: prices object
+          $ref: '#/components/schemas/prices'
         printed_name:
           description: "The localized name printed on this card, if any."
           type: string
@@ -988,13 +988,13 @@ components:
           nullable: true
         purchase_uris:
           description: "An object providing URIs to this card’s listing on major marketplaces."
-          type: object #TODO: purchase uri objects
+          $ref: '#/components/schemas/purchase_uris'
         rarity:
           description: "This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus."
           type: string
         related_uris:
           description: "An object providing URIs to this card’s listing on other Magic: The Gathering online resources."
-          type: object #TODO: related uris object
+          $ref: '#/components/schemas/related_uris'
         released_at:
           description: "The date this card was first released."
           type: string
@@ -1084,7 +1084,7 @@ components:
           nullable: true
         image_uris:
           description: "An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead."
-          type: object #TODO: image uri object
+          $ref: '#/components/schemas/image_uris'
           nullable: true
         loyality:
           description: "This face’s loyalty, if any."
@@ -1171,8 +1171,119 @@ components:
 
              * `"R"` - Color: Red | Basic Land: Mountain
 
-             * `"G"` - Color: Green | Basic Land: Forest
-
+             * `"G"` - Color: Green | Basic Land: Forestytgrf
+    legalities:
+      type: object
+      properties:
+        standard:
+          $ref: '#/components/schemas/legalities_values'
+        future:
+          $ref: '#/components/schemas/legalities_values'
+        historic:
+          $ref: '#/components/schemas/legalities_values'
+        gladiator:
+          $ref: '#/components/schemas/legalities_values'
+        pioneer:
+          $ref: '#/components/schemas/legalities_values'
+        modern:
+          $ref: '#/components/schemas/legalities_values'
+        legacy:
+          $ref: '#/components/schemas/legalities_values'
+        pauper:
+          $ref: '#/components/schemas/legalities_values'
+        vintage:
+          $ref: '#/components/schemas/legalities_values'
+        penny:
+          $ref: '#/components/schemas/legalities_values'
+        commander:
+          $ref: '#/components/schemas/legalities_values'
+        brawl:
+          $ref: '#/components/schemas/legalities_values'
+        duel:
+          $ref: '#/components/schemas/legalities_values'
+        oldschool:
+          $ref: '#/components/schemas/legalities_values'
+        premodern:
+          $ref: '#/components/schemas/legalities_values'
+    legalities_values:
+      type: string
+      enum:
+        - legal
+        - not_legal
+        - restricted
+        - banned
+    image_uris:
+      type: object
+      properties:
+        small:
+          type: string
+          format: uri
+        normal:
+          type: string
+          format: uri
+        large:
+          type: string
+          format: uri
+        png:
+          type: string
+          format: uri
+        art_crop:
+          type: string
+          format: uri
+        border_crop:
+          type: string
+          format: uri
+    prices:
+      type: object
+      properties:
+        usd:
+          type: string
+        usd_foil:
+          type: string
+        eur:
+          type: string
+        eur_foil:
+          type: string
+        tix:
+          type: string
+    related_uris:
+      type: object
+      properties:
+        gatherer:
+          type: string
+          format: uri
+          nullable: true
+        tcgplayer_infinite_articles:
+          type: string
+          format: uri
+          nullable: true
+        tcgplayer_infinite_decks:
+          type: string
+          format: uri
+          nullable: true
+        edhrec:
+          type: string
+          format: uri
+          nullable: true
+        mtgtop8:
+          type: string
+          format: uri
+          nullable: true
+    purchase_uris:
+      type: object
+      properties:
+        tcgplayer:
+          type: string
+          format: uri
+          nullable: true
+        cardmarket:
+          type: string
+          format: uri
+          nullable: true
+        cardhoarder:
+          type: string
+          format: uri
+          nullable: true
 
   parameters:
     formatJson:
