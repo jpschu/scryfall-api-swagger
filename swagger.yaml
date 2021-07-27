@@ -684,9 +684,7 @@ components:
           type: boolean
         colors:
           description: "An array of colors that this symbol represents."
-          type: array
-          items:
-            type: object #TODO: Need to add color object here
+          $ref: '#/components/schemas/color_array'
         gatherer_alternates:
           description: "An array of plaintext versions of this symbol that Gatherer uses on old cards to describe original printed text. For example: {W} has [\"oW\", \"ooW\"] as alternates."
           type: string
@@ -836,10 +834,10 @@ components:
           $ref: '#/components/schemas/color_array'
         color_indicator:
           description: "The colors in this card’s color indicator, if any. A null value for this field indicates the card does not have one."
-          type: object #TODO: colors object
+          $ref: '#/components/schemas/color_array'
         colors:
           description: "This card’s colors, if the overall card has colors defined by the rules. Otherwise the colors will be on the card_faces objects, see below."
-          type: object #TODO: colors object
+          $ref: '#/components/schemas/color_array'
         edhrec_rank:
           description: "This card’s overall rank/popularity on EDHREC. Not all cards are ranked."
           type: integer
@@ -889,7 +887,7 @@ components:
           type: string
         produced_mana:
           description: "Colors of mana that this card could produce."
-          type: object #TODO: colors
+          $ref: '#/components/schemas/color_array'
           nullable: true
         reserved:
           description: "True if this card is on the Reserved List."
@@ -1069,11 +1067,11 @@ components:
           nullable: true
         color_indicator:
           description: "The colors in this face’s color indicator, if any."
-          type: object #TODO: colors object
+          $ref: '#/components/schemas/color_array'
           nullable: true
         colors:
           description: "This face’s colors, if the game defines colors for the individual face of this card."
-          type: string #TODO: colors object
+          $ref: '#/components/schemas/color_array'
           nullable: true
         flavor_text:
           description: "The flavor text printed on this face, if any."
@@ -1160,7 +1158,7 @@ components:
       items:
         type: string
       description: >
-            Whenever the API presents set of Magic colors, the field will be an array that uses the uppercase, single-character abbreviations for those colors. For example, ["W","U"] represents something that is both white and blue. Colorless sources are denoted with an empty array []
+            Whenever the API presents set of Magic colors, the field will be an array that uses the uppercase, single-character abbreviations for those colors. For example, ["W","U"] represents something that is both white and blue. Colorless sources are denoted with an empty array [].
             <br><br>
             Common places were you might see this kind of array are a Card object’s colors and color_identity. When a color field is null or missing, it implies that that information is not pertinent for the current object. It does not imply that the object is colorless. Color arrays are not guaranteed to be in a particular order.
             <br><br>
