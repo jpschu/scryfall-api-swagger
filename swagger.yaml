@@ -514,11 +514,6 @@ components:
      description: "A List object represents a requested sequence of other objects (Cards, Sets, etc). List objects may be paginated, and also include information about issues raised when generating the list."
      type: object
      properties:
-       data:
-        description: "An array of the requested objects, in a specific order."
-        type: array
-        items:
-          type: object
        has_more:
          description: "True if this List is paginated and there is a page beyond the current page."
          type: boolean
@@ -561,7 +556,6 @@ components:
           type: string
         set_type:
           description: "A computer-readable classification for this set. See below."
-          type: string
         released_at:
           description: "The date the set was released or the first card was printed in the set (in GMT-8 Pacific time)."
           type: string
@@ -610,13 +604,7 @@ components:
           description: "A Scryfall API URI that you can request to begin paginating over the cards in this set."
           type: string
           format: uri
-    set_list:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/set'
+
     rulings:
       type: object
       properties:
@@ -624,19 +612,12 @@ components:
           description: "A computer-readable string indicating which company produced this ruling, either wotc or scryfall."
           type: string
         published_at:
-          description: "	The date when the ruling or note was published."
+          description: "  The date when the ruling or note was published."
           type: string
           format: Date
         comment:
           description: "The text of the ruling."
           type: string
-    rulings_list:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/rulings'
     card_symbol:
       type: object
       properties:
@@ -681,6 +662,9 @@ components:
     catalog:
       type: object
       properties:
+        object:
+          type: string
+          default: "catalog"
         uri:
           description: "A link to the current catalog on Scryfall’s API."
           type: string
@@ -730,15 +714,6 @@ components:
         content_encoding:
           description: "The Content-Encoding encoding that will be used to transmit this file when you download it. ex. \"gzip\""
           type: string
-    bulk_data_list:
-      type: object
-      properties:
-        has_more:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/bulk_data'
     card:
       type: object
       properties:
@@ -1137,6 +1112,91 @@ components:
           description: "A URI where you can retrieve a full object describing this card on Scryfall’s API."
           type: string
           format: uri
+    card_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/properties/object_list'
+        has_more:
+          $ref: '#/components/properties/has_more'
+        next_page:
+          $ref: '#/components/properties/next_page'
+        total_cards:
+          $ref: '#/components/properties/total_cards'
+        warnings:
+          $ref: '#/components/properties/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/card'
+    set_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/properties/object_list'
+        has_more:
+          $ref: '#/components/properties/has_more'
+        next_page:
+          $ref: '#/components/properties/next_page'
+        total_cards:
+          $ref: '#/components/properties/total_cards'
+        warnings:
+          $ref: '#/components/properties/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/set'
+    rulings_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/properties/object_list'
+        has_more:
+          $ref: '#/components/properties/has_more'
+        next_page:
+          $ref: '#/components/properties/next_page'
+        total_cards:
+          $ref: '#/components/properties/total_cards'
+        warnings:
+          $ref: '#/components/properties/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/rulings'
+    card_symbol_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/properties/object_list'
+        has_more:
+          $ref: '#/components/properties/has_more'
+        next_page:
+          $ref: '#/components/properties/next_page'
+        total_cards:
+          $ref: '#/components/properties/total_cards'
+        warnings:
+          $ref: '#/components/properties/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/card_symbol'
+    bulk_data_list:
+      type: object
+      properties:
+        object:
+          $ref: '#/components/properties/object_list'
+        has_more:
+          $ref: '#/components/properties/has_more'
+        next_page:
+          $ref: '#/components/properties/next_page'
+        total_cards:
+          $ref: '#/components/properties/total_cards'
+        warnings:
+          $ref: '#/components/properties/warnings'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/bulk_data'
     color_array:
       type: array
       items:
@@ -1268,6 +1328,29 @@ components:
           type: string
           format: uri
           nullable: true
+    set_types:
+      type: string
+      enum:
+        - core
+        - expansion
+        - masters
+        - masterpiece
+        - from_the_vault
+        - spellbook
+        - premium_deck
+        - duel_deck
+        - draft_innovation
+        - treasure_chest
+        - commander
+        - planechase
+        - archenemy
+        - vanguard
+        - funny
+        - starter
+        - box
+        - promo
+        - token
+        - memorabilia
 
   parameters:
     formatJson:
@@ -1291,3 +1374,26 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/error'
+  properties:
+    #The following are properties resused for the List Object
+    object_list:
+      type: string
+      default: "list"
+    has_more:
+      description: "True if this List is paginated and there is a page beyond the current page."
+      type: boolean
+    next_page:
+      description: "If there is a page beyond the current page, this field will contain a full API URI to that page. You may submit a HTTP GET request to that URI to continue paginating forward on this List."
+      type: string
+      format: uri
+      nullable: true
+    total_cards:
+      description: "If this is a list of Card objects, this field will contain the total number of cards found across all pages."
+      type: string
+      nullable: true
+    warnings:
+      description: "An array of human-readable warnings issued when generating this list, as strings. Warnings are non-fatal issues that the API discovered with your input. In general, they indicate that the List will not contain the all of the information you requested. You should fix the warnings and re-submit your request."
+      type: array
+      nullable: true
+      items:
+        type: string
