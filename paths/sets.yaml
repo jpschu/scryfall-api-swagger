@@ -1,4 +1,0 @@
-get:
-  tags:
-    - sets
-  summary: "Returns a List object of all Sets on Scryfall."
