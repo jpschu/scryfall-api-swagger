@@ -26,6 +26,14 @@ get:
     - $ref: '../../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../../responses/card_json.yaml'
+      description: success
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/card.yaml'
     default:
-      $ref: '../../responses/error.yaml'
+      description: error
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error.yaml'
