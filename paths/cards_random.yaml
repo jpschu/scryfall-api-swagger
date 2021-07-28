@@ -25,5 +25,4 @@ get:
         type: string
     - $ref: '../parameters/pretty_json.yaml'
   responses:
-    $ref: '../responses/card_json.yaml'
-    $ref: '../responses/error.yaml'
+    $ref: '../responses/card_multimedia_response.yaml'

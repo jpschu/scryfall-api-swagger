@@ -1,6 +1,6 @@
 description: success
 content:
-  image/png:
+  image/jpeg:
     schema:
       type: string
       format: binary

@@ -1,0 +1,15 @@
+200:
+  description: success
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/card.yaml'
+      text/plain; charset=utf-8:
+        schema:
+          type: string
+      image/jpeg:
+        schema:
+          type: string
+          format: binary
+default:
+  $ref: '../responses/error.yaml'

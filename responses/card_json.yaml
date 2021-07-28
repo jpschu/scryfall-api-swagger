@@ -1,5 +1,4 @@
-200:
-  description: success
+description: success
   content:
     application/json:
       schema:
