@@ -11,7 +11,7 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../schemas/set_list.yaml'
+            $ref: './schemas/set_list.yaml'
     default:
       description: error
         content:
