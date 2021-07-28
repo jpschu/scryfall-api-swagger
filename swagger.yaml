@@ -23,6 +23,14 @@ tags:
 paths:
   /sets:
     $ref: './paths/sets.yaml'
+  /sets/code:
+    get:
+      tags:
+        - card symbols
+      summary: "Returns a single random Card object"
+      responses:
+        200:
+          description: success
   /symbology:
     get:
       tags:
