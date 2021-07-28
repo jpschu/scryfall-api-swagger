@@ -26,52 +26,9 @@ paths:
   /sets/{code}:
     $ref: './paths/sets_code.yaml'
   /sets/tcgplayer/{id}:
-    get:
-      tags:
-        - sets
-      summary: "Returns a Set with the given tcgplayer_id, also known as the groupId on TCGplayer’s API."
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: "The tcgplayer_id or groupId."
-          schema:
-            type: integer
-        - $ref: '#/components/parameters/formatJson'
-        - $ref: '#/components/parameters/prettyJson'
-      responses:
-        200:
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/set'
-        default:
-          $ref: '#/components/responses/default'
+    $ref: './paths/sets_tcgplayer_id.yaml'
   /sets/{id}:
-    get:
-      tags:
-        - sets
-      summary: "Returns a Set with the given Scryfall id."
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: "The Scryfall ID."
-          schema:
-            type: string
-            format: uuid
-        - $ref: '#/components/parameters/formatJson'
-        - $ref: '#/components/parameters/prettyJson'
-      responses:
-        200:
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/set'
-        default:
-          $ref: '#/components/responses/default'
+    $ref: './paths/sets_id.yaml'
   /cards/search:
     get:
       tags:
