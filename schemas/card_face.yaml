@@ -6,7 +6,7 @@ properties:
     nullable: true
   color_indicator:
     description: "The colors in this face’s color indicator, if any."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
     nullable: true
   colors:
     description: "This face’s colors, if the game defines colors for the individual face of this card."

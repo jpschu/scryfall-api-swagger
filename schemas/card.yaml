@@ -60,7 +60,7 @@ properties:
     description: "If this card is closely related to other cards, this property will be an array with Related Card Objects."
     type: array
     items:
-      $ref: './schemas/related_card.yaml'
+      $ref: '../schemas/related_card.yaml'
     nullable: true
   card_faces:
     description: "An array of Card Face objects, if this card is multifaced."
@@ -202,7 +202,7 @@ properties:
     type: string
   image_uris:
     description: "An object listing available imagery for this card. See the Card Imagery article for more information."
-    $ref: './schemas/image_uris.yaml'
+    $ref: '../schemas/image_uris.yaml'
     nullable: true
   prices:
     description: "An object containing daily price information for this card, including usd, usd_foil, eur, and tix prices, as strings."
