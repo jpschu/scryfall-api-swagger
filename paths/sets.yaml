@@ -3,5 +3,5 @@ get:
     - sets
   summary: "Returns a List object of all Sets on Scryfall."
   parameters:
-    $ref: './parameters/format_json.yaml'
-    $ref: './parameters/pretty_json.yaml'
+    $ref: '../parameters/format_json.yaml'
+    $ref: '../parameters/pretty_json.yaml'
