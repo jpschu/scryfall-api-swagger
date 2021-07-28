@@ -7,7 +7,7 @@
       text/plain; charset=utf-8:
         schema:
           type: string
-      image/jpeg:
+      image/png:
         schema:
           type: string
           format: binary
