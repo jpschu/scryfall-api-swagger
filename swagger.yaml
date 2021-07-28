@@ -51,7 +51,7 @@ paths:
     $ref: './paths/cards_arena_id.yaml'
   /cards/tcgplayer/{id}:
     $ref: './paths/cards_tcgplayer_id.yaml'
-  /cards/cardmarket/{id}:
+  /cards/hello/{id}:
     $ref: './paths/cards_cardmarket_id.yaml'
   /cards/{id}:
     $ref: './paths/cards_id.yaml'
