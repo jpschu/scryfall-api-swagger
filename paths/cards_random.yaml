@@ -25,4 +25,22 @@ get:
         type: string
     - $ref: '../parameters/pretty_json.yaml'
   responses:
-    $ref: '../responses/card_multimedia_response.yaml'
+    200:
+      description: success
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/card.yaml'
+          text/plain; charset=utf-8:
+            schema:
+              type: string
+          image/jpeg:
+            schema:
+              type: string
+              format: binary
+    default:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/error.yaml'
