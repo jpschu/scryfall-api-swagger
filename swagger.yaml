@@ -51,10 +51,12 @@ paths:
     $ref: './paths/cards_arena_id.yaml'
   /cards/tcgplayer/{id}:
     $ref: './paths/cards_tcgplayer_id.yaml'
-  /cards/hello/{id}:
+  /cards/cardmarket/{id}:
     $ref: './paths/cards_cardmarket_id.yaml'
   /cards/{id}:
     $ref: './paths/cards_id.yaml'
+  /cards/testing/{id}:
+    $ref: './paths_tcgplayer_id.yaml'
   /cards/multiverse/id/rulings:
     get:
       tags:
