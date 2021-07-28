@@ -1,0 +1,907 @@
+error:
+  description: "An Error object represents a failure to find information or understand the input you provided to the API. Error objects are always transmitted with the appropriate 4XX or 5XX HTTP status code."
+  type: object
+  properties:
+    status:
+     description: "An integer HTTP status code for this error."
+     type: integer
+    code:
+      description: "A computer-friendly string representing the appropriate HTTP status code."
+      type: string
+    details:
+      description: "A human-readable string explaining the error."
+      type: string
+    type:
+      description: "A computer-friendly string that provides additional context for the main error. For example, an endpoint many generate HTTP 404 errors for different kinds of input. This field will provide a label for the specific kind of 404 failure, such as ambiguous."
+      type: string
+      nullable: true
+    warnings:
+      description: "If your input also generated non-failure warnings, they will be provided as human-readable strings in this array.your input also generated non-failure warnings, they will be provided as human-readable strings in this array."
+      type: array
+      nullable: true
+      items:
+        type: string
+list:
+ description: "A List object represents a requested sequence of other objects (Cards, Sets, etc). List objects may be paginated, and also include information about issues raised when generating the list."
+ type: object
+ properties:
+   has_more:
+     description: "True if this List is paginated and there is a page beyond the current page."
+     type: boolean
+   next_page:
+     description: "If there is a page beyond the current page, this field will contain a full API URI to that page. You may submit a HTTP GET request to that URI to continue paginating forward on this List."
+     type: string
+     format: uri
+     nullable: true
+   total_cards:
+     description: "If this is a list of Card objects, this field will contain the total number of cards found across all pages."
+     type: string
+     nullable: true
+   warnings:
+     description: "An array of human-readable warnings issued when generating this list, as strings. Warnings are non-fatal issues that the API discovered with your input. In general, they indicate that the List will not contain the all of the information you requested. You should fix the warnings and re-submit your request."
+     type: array
+     nullable: true
+     items:
+       type: string
+set:
+  description: ""
+  type: object
+  properties:
+    id:
+      description: "A unique ID for this set on Scryfall that will not change."
+      type: string
+      format: uuid
+    code:
+      description: "The unique three to five-letter code for this set."
+      type: string
+    mtgo_code:
+      description: "The unique code for this set on MTGO, which may differ from the regular code."
+      type: string
+      nullable: true
+    tcgplayer_id:
+      description: "This set’s ID on TCGplayer’s API, also known as the groupId."
+      type: integer
+      nullable: true
+    name:
+      description: "The English name of the set."
+      type: string
+    set_type:
+      description: "A computer-readable classification for this set. See below."
+    released_at:
+      description: "The date the set was released or the first card was printed in the set (in GMT-8 Pacific time)."
+      type: string
+      format: "date"
+    block_code:
+      description: "The block code for this set, if any."
+      type: string
+      nullable: true
+    block:
+      description: "The block or group name code for this set, if any."
+      type: string
+      nullable: true
+    parent_set_code:
+      description: "The set code for the parent set, if any. promo and token sets often have a parent set."
+      type: string
+      nullable: true
+    card_count:
+      description: "The number of cards in this set."
+      type: integer
+    printed_size:
+      description: "The denominator for the set’s printed collector numbers."
+      type: integer
+      nullable: true
+    digital:
+      description: "True if this set was only released in a video game."
+      type: boolean
+    foil_only:
+      description: "True if this set contains only foil cards."
+      type: boolean
+    nonfoil_only:
+      description: "True if this set contains only nonfoil cards."
+      type: boolean
+    scryfall_uri:
+      description: "A link to this set’s permapage on Scryfall’s website."
+      type: string
+      format: uri
+    uri:
+      description: "A link to this set object on Scryfall’s API."
+      type: string
+      format: uri
+    icon_svg_uri:
+      description: "A URI to an SVG file for this set’s icon on Scryfall’s CDN. Hotlinking this image isn’t recommended, because it may change slightly over time. You should download it and use it locally for your particular user interface needs."
+      type: string
+      format: uri
+    search_uri:
+      description: "A Scryfall API URI that you can request to begin paginating over the cards in this set."
+      type: string
+      format: uri
+
+ruling:
+  type: object
+  properties:
+    source:
+      description: "A computer-readable string indicating which company produced this ruling, either wotc or scryfall."
+      type: string
+    published_at:
+      description: "  The date when the ruling or note was published."
+      type: string
+      format: Date
+    comment:
+      description: "The text of the ruling."
+      type: string
+card_symbol:
+  type: object
+  properties:
+    symbol:
+      description: "The plaintext symbol. Often surrounded with curly braces {}. Note that not all symbols are ASCII text (for example, {∞})."
+      type: string
+    loose_variant:
+      description: "An alternate version of this symbol, if it is possible to write it without curly braces."
+      type: string
+      nullable: true
+    english:
+      description: "An English snippet that describes this symbol. Appropriate for use in alt text or other accessible communication formats."
+      type: string
+    transposable:
+      description: "True if it is possible to write this symbol “backwards”. For example, the official symbol {U/P} is sometimes written as {P/U} or {P\\U} in informal settings. Note that the Scryfall API never writes symbols backwards in other responses. This field is provided for informational purposes."
+      type: boolean
+    represents_mana:
+      description: "True if this is a mana symbol."
+      type: boolean
+    cmc:
+      description: "A decimal number representing this symbol’s converted mana cost. Note that mana symbols from funny sets can have fractional converted mana costs."
+      type: number
+      nullable: true
+    appears_in_mana_costs:
+      description: "True if this symbol appears in a mana cost on any Magic card. For example {20} has this field set to false because {20} only appears in Oracle text, not mana costs."
+      type: boolean
+    funny:
+      description: "True if this symbol is only used on funny cards or Un-cards."
+      type: boolean
+    colors:
+      description: "An array of colors that this symbol represents."
+      $ref: '#/components/schemas/color_array'
+    gatherer_alternates:
+      description: "An array of plaintext versions of this symbol that Gatherer uses on old cards to describe original printed text. For example: {W} has [\"oW\", \"ooW\"] as alternates."
+      type: string
+      nullable: true
+    svg_uri:
+      description: "A URI to an SVG image of this symbol on Scryfall’s CDNs."
+      type: string
+      format: uri
+      nullable: true
+catalog:
+  type: object
+  properties:
+    object:
+      type: string
+      default: "catalog"
+    uri:
+      description: "A link to the current catalog on Scryfall’s API."
+      type: string
+      format: uri
+    total_values:
+      description: "The number of items in the data array."
+      type: integer
+    data:
+      description: "An array of datapoints, as strings."
+      type: array
+      items:
+        type: string
+bulk_data:
+  type: object
+  properties:
+    id:
+      description: ""
+      type: string
+      format: uuid
+    uri:
+      description: ""
+      type: string
+      format: uri
+    type:
+      description: ""
+      type: string
+    name:
+      description: ""
+      type: string
+    description:
+      description: ""
+      type: string
+    download_uri:
+      description: ""
+      type: string
+      format: uri
+    updated_at:
+      description: ""
+      type: string
+      format: "date-time"
+    compressed_size:
+      description: ""
+      type: integer
+    content_type:
+      description: "The MIME type of this file. ex: \"application/json\""
+      type: string
+    content_encoding:
+      description: "The Content-Encoding encoding that will be used to transmit this file when you download it. ex. \"gzip\""
+      type: string
+card:
+  type: object
+  properties:
+    arena_id:
+      description: "This card’s Arena ID, if any. A large percentage of cards are not available on Arena and do not have this ID."
+      type: integer
+      nullable: true
+    id:
+      description: "A unique ID for this card in Scryfall’s database."
+      type: string
+      format: uuid
+    lang:
+      description: "A language code for this printing."
+      type: string
+    mtgo_id:
+      description: "This card’s Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+      type: integer
+      nullable: true
+    mtgo_foil_id:
+      description: "This card’s foil Magic Online ID (also known as the Catalog ID), if any. A large percentage of cards are not available on Magic Online and do not have this ID."
+      type: integer
+      nullable: true
+    multiverse_ids:
+      description: "This card’s multiverse IDs on Gatherer, if any, as an array of integers. Note that Scryfall includes many promo cards, tokens, and other esoteric objects that do not have these identifiers."
+      type: array
+      items:
+        type: integer
+      nullable: true
+    tcgplayer_id:
+      description: "This card’s ID on TCGplayer’s API, also known as the productId."
+      type: integer
+      nullable: true
+    cardmarket_id:
+      description: "This card’s ID on Cardmarket’s API, also known as the idProduct."
+      type: integer
+      nullable: true
+    object:
+      description: "A content type for this object, always card."
+      type: string
+    oracle_id:
+      description: "A unique ID for this card’s oracle identity. This value is consistent across reprinted card editions, and unique among different cards with the same name (tokens, Unstable variants, etc)."
+      type: string
+      format: uuid
+    prints_search_uri:
+      description: "A link to where you can begin paginating all re/prints for this card on Scryfall’s API."
+      type: string
+      format: uri
+    rulings_uri:
+      description: "A link to this card’s rulings list on Scryfall’s API."
+      type: string
+      format: uri
+    scryfall_uri:
+      description: "A link to this card’s permapage on Scryfall’s website."
+      type: string
+      format: uri
+    uri:
+      description: "A link to this card object on Scryfall’s API."
+      type: string
+      format: uri
+    all_parts:
+      description: "If this card is closely related to other cards, this property will be an array with Related Card Objects."
+      type: array
+      items:
+        $ref: '#/components/schemas/related_card'
+      nullable: true
+    card_faces:
+      description: "An array of Card Face objects, if this card is multifaced."
+      type: array
+      items:
+        $ref: '#/components/schemas/card_face'
+      nullable: true
+    cmc:
+      description: "The card’s converted mana cost. Note that some funny cards have fractional mana costs."
+      type: number
+    color_identity:
+      description: "This card’s color identity."
+      $ref: '#/components/schemas/color_array'
+    color_indicator:
+      description: "The colors in this card’s color indicator, if any. A null value for this field indicates the card does not have one."
+      $ref: '#/components/schemas/color_array'
+    colors:
+      description: "This card’s colors, if the overall card has colors defined by the rules. Otherwise the colors will be on the card_faces objects, see below."
+      $ref: '#/components/schemas/color_array'
+    edhrec_rank:
+      description: "This card’s overall rank/popularity on EDHREC. Not all cards are ranked."
+      type: integer
+      nullable: true
+    foil:
+      description: "True if this printing exists in a foil version."
+      type: boolean
+    hand_modifier:
+      description: "This card’s hand modifier, if it is Vanguard card. This value will contain a delta, such as -1."
+      type: string
+      nullable: true
+    keywords:
+      description: "An array of keywords that this card uses, such as 'Flying' and 'Cumulative upkeep'."
+      type: array
+      items:
+        type: string
+    layout:
+      description: "A code for this card’s layout."
+      type: string
+    legalities:
+      description: "An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned."
+      $ref: '#/components/schemas/legalities'
+    life_modifier:
+      description: "This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2."
+      type: string
+    loyalty:
+      description: "This loyalty if any. Note that some cards have loyalties that are not numeric, such as X."
+      type: string
+    mana_cost:
+      description: "The mana cost for this card. This value will be any empty string \"\" if the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values. Multi-faced cards will report this value in card faces."
+      type: string
+    name:
+      description: "The name of this card. If this card has multiple faces, this field will contain both names separated by ␣//␣."
+      type: string
+    nonfoil:
+      description: "True if this printing exists in a nonfoil version."
+      type: boolean
+    oracle_text:
+      description: "The Oracle text for this card, if any."
+      type: string
+      nullable: true
+    oversized:
+      description: "True if this card is oversized."
+      type: boolean
+    power:
+      description: "This card’s power, if any. Note that some cards have powers that are not numeric, such as *."
+      type: string
+    produced_mana:
+      description: "Colors of mana that this card could produce."
+      $ref: '#/components/schemas/color_array'
+      nullable: true
+    reserved:
+      description: "True if this card is on the Reserved List."
+      type: boolean
+    toughness:
+      description: "This card’s toughness, if any. Note that some cards have toughnesses that are not numeric, such as *."
+      type: string
+      nullable: true
+    type_line:
+      description: "The type line of this card."
+      type: string
+    artist:
+      description: "The name of the illustrator of this card. Newly spoiled cards may not have this field yet."
+      type: string
+      nullable: true
+    booster:
+      description: "Whether this card is found in boosters."
+      type: boolean
+    border_color:
+      description: "This card’s border color: black, white, borderless, silver, or gold."
+      type: string
+    card_back_id:
+      description: "The Scryfall ID for the card back design present on this card."
+      type: string
+      format: uuid
+    collector_number:
+      description: "This card’s collector number. Note that collector numbers can contain non-numeric characters, such as letters or ★."
+      type: string
+    content_warning:
+      description: "True if you should consider avoiding use of this print downstream."
+      type: boolean
+      nullable: true
+    digital:
+      description: "True if this card was only released in a video game."
+      type: boolean
+    flavor_name:
+      description: "The just-for-fun name printed on the card (such as for Godzilla series cards)."
+      type: string
+      nullable: true
+    flavor_text:
+      description: "The flavor text, if any."
+      type: string
+      nullable: true
+    frame_effects:
+      description: "This card’s frame effects, if any."
+      type: array
+      items:
+        type: string
+      nullable: true
+    frame:
+      description: "This card’s frame layout."
+      type: string
+    full_art:
+      description: "True if this card’s artwork is larger than normal."
+      type: boolean
+    games:
+      description: "A list of games that this card print is available in, paper, arena, and/or mtgo."
+      type: array
+      items:
+        type: string
+    highres_image:
+      description: "True if this card’s imagery is high resolution."
+      type: boolean
+    illustration_id:
+      description: "A unique identifier for the card artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
+      type: string
+      format: uuid
+    image_status:
+      description: "A computer-readable indicator for the state of this card’s image, one of missing, placeholder, lowres, or highres_scan."
+      type: string
+    image_uris:
+      description: "An object listing available imagery for this card. See the Card Imagery article for more information."
+      $ref: '#/components/schemas/image_uris'
+      nullable: true
+    prices:
+      description: "An object containing daily price information for this card, including usd, usd_foil, eur, and tix prices, as strings."
+      $ref: '#/components/schemas/prices'
+    printed_name:
+      description: "The localized name printed on this card, if any."
+      type: string
+      nullable: true
+    printed_text:
+      description: "The localized text printed on this card, if any."
+      type: string
+      nullable: true
+    printed_type_line:
+      description: "The localized type line printed on this card, if any."
+      type: string
+      nullable: true
+    promo:
+      description: "True if this card is a promotional print."
+      type: boolean
+    promo_types:
+      description: "An array of strings describing what categories of promo cards this card falls into."
+      type: array
+      items:
+        type: string
+      nullable: true
+    purchase_uris:
+      description: "An object providing URIs to this card’s listing on major marketplaces."
+      $ref: '#/components/schemas/purchase_uris'
+    rarity:
+      description: "This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus."
+      type: string
+    related_uris:
+      description: "An object providing URIs to this card’s listing on other Magic: The Gathering online resources."
+      $ref: '#/components/schemas/related_uris'
+    released_at:
+      description: "The date this card was first released."
+      type: string
+      format: date
+    reprint:
+      description: "True if this card is a reprint."
+      type: boolean
+    scryfall_set_uri:
+      description: "A link to this card’s set on Scryfall’s website."
+      type: string
+      format: uri
+    set_name:
+      description: "This card’s full set name."
+      type: string
+    set_search_uri:
+      description: "A link to where you can begin paginating this card’s set on the Scryfall API."
+      type: string
+      format: uri
+    set_type:
+      description: "The type of set this printing is in."
+      type: string
+    set_uri:
+      description: "A link to this card’s set object on Scryfall’s API."
+      type: string
+      format: uri
+    set:
+      description: "This card’s set code."
+      type: string
+    set_id:
+      description: "This card’s Set object UUID."
+      type: string
+    story_spotlight:
+      description: "True if this card is a Story Spotlight."
+      type: boolean
+    textless:
+      description: "True if the card is printed without text."
+      type: boolean
+    variation:
+      description: "Whether this card is a variation of another printing."
+      type: boolean
+    variation_of:
+      description: "The printing ID of the printing this card is a variation of."
+      type: string
+      format: uuid
+      nullable: true
+    watermark:
+      description: "This card’s watermark, if any."
+      type: string
+      nullable: true
+    preview.previewed_at:
+      description: "The date this card was previewed."
+      type: string
+      format: date
+      nullable: true
+    preview.source_uri:
+      description: "A link to the preview for this card."
+      type: string
+      format: uri
+      nullable: true
+    preview.source:
+      description: "The name of the source that previewed this card."
+      type: string
+      nullable: true
+card_face:
+  type: object
+  properties:
+    artist:
+      description: "The name of the illustrator of this card face. Newly spoiled cards may not have this field yet."
+      type: string
+      nullable: true
+    color_indicator:
+      description: "The colors in this face’s color indicator, if any."
+      $ref: '#/components/schemas/color_array'
+      nullable: true
+    colors:
+      description: "This face’s colors, if the game defines colors for the individual face of this card."
+      $ref: '#/components/schemas/color_array'
+      nullable: true
+    flavor_text:
+      description: "The flavor text printed on this face, if any."
+      type: string
+      nullable: true
+    illustration_id:
+      description: "A unique identifier for the card face artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
+      type: string
+      format: uuid
+      nullable: true
+    image_uris:
+      description: "An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead."
+      $ref: '#/components/schemas/image_uris'
+      nullable: true
+    loyality:
+      description: "This face’s loyalty, if any."
+      type: string
+      nullable: true
+    mana_cost:
+      description: "The mana cost for this face. This value will be any empty string \"\" if the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values."
+      type: string
+    name:
+      description: "The name of this particular face."
+      type: string
+    object:
+      description: "A content type for this object, always card_face."
+      type: string
+    oracle_text:
+      description: "The Oracle text for this face, if any."
+      type: string
+      nullable: true
+    power:
+      description: "This face’s power, if any. Note that some cards have powers that are not numeric, such as *."
+      type: string
+      nullable: true
+    printed_name:
+      description: "The localized name printed on this face, if any."
+      type: string
+      nullable: true
+    printed_text:
+      description: "The localized text printed on this face, if any."
+      type: string
+      nullable: true
+    printed_type_line:
+      description: "The localized type line printed on this face, if any."
+      type: string
+      nullable: true
+    toughness:
+      description: "This face’s toughness, if any."
+      type: string
+      nullable: true
+    type_line:
+      description: "The type line of this particular face."
+      type: string
+    watermark:
+      description: "The watermark on this particulary card face, if any."
+      type: string
+      nullable: true
+related_card:
+  type: object
+  properties:
+    id:
+      description: "An unique ID for this card in Scryfall’s database."
+      type: string
+      format: uuid
+    object:
+      description: "A content type for this object, always related_card."
+      type: string
+    component:
+      description: "A field explaining what role this card plays in this relationship, one of token, meld_part, meld_result, or combo_piece."
+      type: string
+    name:
+      description: "The name of this particular related card."
+      type: string
+    type_line:
+      description: "The type line of this card."
+      type: string
+    uri:
+      description: "A URI where you can retrieve a full object describing this card on Scryfall’s API."
+      type: string
+      format: uri
+card_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/card'
+post_card_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    not_found:
+      type: array
+      items:
+        type: string
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/card'
+set_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/set'
+ruling_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/ruling'
+card_symbol_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/card_symbol'
+bulk_data_list:
+  type: object
+  properties:
+    object:
+      $ref: '#/components/schemas/object_list'
+    has_more:
+      $ref: '#/components/schemas/has_more'
+    next_page:
+      $ref: '#/components/schemas/next_page'
+    total_cards:
+      $ref: '#/components/schemas/total_cards'
+    warnings:
+      $ref: '#/components/schemas/warnings'
+    data:
+      type: array
+      items:
+        $ref: '#/components/schemas/bulk_data'
+color_array:
+  type: array
+  items:
+    type: string
+  description: >
+        Whenever the API presents set of Magic colors, the field will be an array that uses the uppercase, single-character abbreviations for those colors. For example, ["W","U"] represents something that is both white and blue. Colorless sources are denoted with an empty array [].
+        <br><br>
+        Common places were you might see this kind of array are a Card object’s colors and color_identity. When a color field is null or missing, it implies that that information is not pertinent for the current object. It does not imply that the object is colorless. Color arrays are not guaranteed to be in a particular order.
+        <br><br>
+        A list of color representations is provided below:
+         * `"W"` - Color: White | Basic Land: Plains
+
+         * `"U"` - Color: Blue | Basic Land: Island
+
+         * `"B"` - Color: Black | Basic Land: Swamp
+
+         * `"R"` - Color: Red | Basic Land: Mountain
+
+         * `"G"` - Color: Green | Basic Land: Forestytgrf
+legalities:
+  type: object
+  properties:
+    standard:
+      $ref: '#/components/schemas/legalities_values'
+    future:
+      $ref: '#/components/schemas/legalities_values'
+    historic:
+      $ref: '#/components/schemas/legalities_values'
+    gladiator:
+      $ref: '#/components/schemas/legalities_values'
+    pioneer:
+      $ref: '#/components/schemas/legalities_values'
+    modern:
+      $ref: '#/components/schemas/legalities_values'
+    legacy:
+      $ref: '#/components/schemas/legalities_values'
+    pauper:
+      $ref: '#/components/schemas/legalities_values'
+    vintage:
+      $ref: '#/components/schemas/legalities_values'
+    penny:
+      $ref: '#/components/schemas/legalities_values'
+    commander:
+      $ref: '#/components/schemas/legalities_values'
+    brawl:
+      $ref: '#/components/schemas/legalities_values'
+    duel:
+      $ref: '#/components/schemas/legalities_values'
+    oldschool:
+      $ref: '#/components/schemas/legalities_values'
+    premodern:
+      $ref: '#/components/schemas/legalities_values'
+legalities_values:
+  type: string
+  enum:
+    - legal
+    - not_legal
+    - restricted
+    - banned
+image_uris:
+  type: object
+  properties:
+    small:
+      type: string
+      format: uri
+    normal:
+      type: string
+      format: uri
+    large:
+      type: string
+      format: uri
+    png:
+      type: string
+      format: uri
+    art_crop:
+      type: string
+      format: uri
+    border_crop:
+      type: string
+      format: uri
+prices:
+  type: object
+  properties:
+    usd:
+      type: string
+    usd_foil:
+      type: string
+    eur:
+      type: string
+    eur_foil:
+      type: string
+    tix:
+      type: string
+related_uris:
+  type: object
+  properties:
+    gatherer:
+      type: string
+      format: uri
+      nullable: true
+    tcgplayer_infinite_articles:
+      type: string
+      format: uri
+      nullable: true
+    tcgplayer_infinite_decks:
+      type: string
+      format: uri
+      nullable: true
+    edhrec:
+      type: string
+      format: uri
+      nullable: true
+    mtgtop8:
+      type: string
+      format: uri
+      nullable: true
+purchase_uris:
+  type: object
+  properties:
+    tcgplayer:
+      type: string
+      format: uri
+      nullable: true
+    cardmarket:
+      type: string
+      format: uri
+      nullable: true
+    cardhoarder:
+      type: string
+      format: uri
+      nullable: true
+set_types:
+  type: string
+  enum:
+    - core
+    - expansion
+    - masters
+    - masterpiece
+    - from_the_vault
+    - spellbook
+    - premium_deck
+    - duel_deck
+    - draft_innovation
+    - treasure_chest
+    - commander
+    - planechase
+    - archenemy
+    - vanguard
+    - funny
+    - starter
+    - box
+    - promo
+    - token
+    - memorabilia
+#The following are properties resused for the List Object
+object_list:
+  type: string
+  default: "list"
+has_more:
+  description: "True if this List is paginated and there is a page beyond the current page."
+  type: boolean
+next_page:
+  description: "If there is a page beyond the current page, this field will contain a full API URI to that page. You may submit a HTTP GET request to that URI to continue paginating forward on this List."
+  type: string
+  format: uri
+  nullable: true
+total_cards:
+  description: "If this is a list of Card objects, this field will contain the total number of cards found across all pages."
+  type: string
+  nullable: true
+warnings:
+  description: "An array of human-readable warnings issued when generating this list, as strings. Warnings are non-fatal issues that the API discovered with your input. In general, they indicate that the List will not contain the all of the information you requested. You should fix the warnings and re-submit your request."
+  type: array
+  nullable: true
+  items:
+    type: string
