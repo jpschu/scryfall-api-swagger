@@ -1,7 +1,7 @@
 get:
   tags:
     - cards
-  summary: "Returns a single card with the given cardmarket_id, also known as the idProduct" or the Product ID on Cardmarket’s APIs."
+  summary: "Returns a single card with the given cardmarket_id, also known as the idProduct or the Product ID on Cardmarket’s APIs."
   parameters:
     - name: id
       in: path
