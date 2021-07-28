@@ -1,0 +1,22 @@
+type: object
+properties:
+  gatherer:
+    type: string
+    format: uri
+    nullable: true
+  tcgplayer_infinite_articles:
+    type: string
+    format: uri
+    nullable: true
+  tcgplayer_infinite_decks:
+    type: string
+    format: uri
+    nullable: true
+  edhrec:
+    type: string
+    format: uri
+    nullable: true
+  mtgtop8:
+    type: string
+    format: uri
+    nullable: true

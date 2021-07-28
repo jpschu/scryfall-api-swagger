@@ -1,0 +1,12 @@
+type: object
+properties:
+  usd:
+    type: string
+  usd_foil:
+    type: string
+  eur:
+    type: string
+  eur_foil:
+    type: string
+  tix:
+    type: string

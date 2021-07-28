@@ -1,0 +1,14 @@
+type: object
+properties:
+  tcgplayer:
+    type: string
+    format: uri
+    nullable: true
+  cardmarket:
+    type: string
+    format: uri
+    nullable: true
+  cardhoarder:
+    type: string
+    format: uri
+    nullable: true

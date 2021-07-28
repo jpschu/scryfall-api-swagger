@@ -1,0 +1,32 @@
+type: object
+properties:
+  standard:
+    $ref: './schemas/legalities_values'
+  future:
+    $ref: './schemas/legalities_values'
+  historic:
+    $ref: './schemas/legalities_values'
+  gladiator:
+    $ref: './schemas/legalities_values'
+  pioneer:
+    $ref: './schemas/legalities_values'
+  modern:
+    $ref: './schemas/legalities_values'
+  legacy:
+    $ref: './schemas/legalities_values'
+  pauper:
+    $ref: './schemas/legalities_values'
+  vintage:
+    $ref: './schemas/legalities_values'
+  penny:
+    $ref: './schemas/legalities_values'
+  commander:
+    $ref: './schemas/legalities_values'
+  brawl:
+    $ref: './schemas/legalities_values'
+  duel:
+    $ref: './schemas/legalities_values'
+  oldschool:
+    $ref: './schemas/legalities_values'
+  premodern:
+    $ref: './schemas/legalities_values'

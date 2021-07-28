@@ -1,0 +1,6 @@
+type: string
+enum:
+  - legal
+  - not_legal
+  - restricted
+  - banned

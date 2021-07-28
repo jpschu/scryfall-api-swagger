@@ -729,7 +729,6 @@ components:
           description: "A Scryfall API URI that you can request to begin paginating over the cards in this set."
           type: string
           format: uri
-
     ruling:
       type: object
       properties:
@@ -1344,159 +1343,21 @@ components:
           items:
             $ref: '#/components/schemas/bulk_data'
     color_array:
-      type: array
-      items:
-        type: string
-      description: >
-            Whenever the API presents set of Magic colors, the field will be an array that uses the uppercase, single-character abbreviations for those colors. For example, ["W","U"] represents something that is both white and blue. Colorless sources are denoted with an empty array [].
-            <br><br>
-            Common places were you might see this kind of array are a Card object’s colors and color_identity. When a color field is null or missing, it implies that that information is not pertinent for the current object. It does not imply that the object is colorless. Color arrays are not guaranteed to be in a particular order.
-            <br><br>
-            A list of color representations is provided below:
-             * `"W"` - Color: White | Basic Land: Plains
-
-             * `"U"` - Color: Blue | Basic Land: Island
-
-             * `"B"` - Color: Black | Basic Land: Swamp
-
-             * `"R"` - Color: Red | Basic Land: Mountain
-
-             * `"G"` - Color: Green | Basic Land: Forestytgrf
+      $ref: './schemas/color_array.yaml'
     legalities:
-      type: object
-      properties:
-        standard:
-          $ref: '#/components/schemas/legalities_values'
-        future:
-          $ref: '#/components/schemas/legalities_values'
-        historic:
-          $ref: '#/components/schemas/legalities_values'
-        gladiator:
-          $ref: '#/components/schemas/legalities_values'
-        pioneer:
-          $ref: '#/components/schemas/legalities_values'
-        modern:
-          $ref: '#/components/schemas/legalities_values'
-        legacy:
-          $ref: '#/components/schemas/legalities_values'
-        pauper:
-          $ref: '#/components/schemas/legalities_values'
-        vintage:
-          $ref: '#/components/schemas/legalities_values'
-        penny:
-          $ref: '#/components/schemas/legalities_values'
-        commander:
-          $ref: '#/components/schemas/legalities_values'
-        brawl:
-          $ref: '#/components/schemas/legalities_values'
-        duel:
-          $ref: '#/components/schemas/legalities_values'
-        oldschool:
-          $ref: '#/components/schemas/legalities_values'
-        premodern:
-          $ref: '#/components/schemas/legalities_values'
+      $ref: './schemas/legalities.yaml'
     legalities_values:
-      type: string
-      enum:
-        - legal
-        - not_legal
-        - restricted
-        - banned
+      $ref: './schemas/legalities_values.yaml'
     image_uris:
-      type: object
-      properties:
-        small:
-          type: string
-          format: uri
-        normal:
-          type: string
-          format: uri
-        large:
-          type: string
-          format: uri
-        png:
-          type: string
-          format: uri
-        art_crop:
-          type: string
-          format: uri
-        border_crop:
-          type: string
-          format: uri
+      $ref: './schemas/image_uris.yaml'
     prices:
-      type: object
-      properties:
-        usd:
-          type: string
-        usd_foil:
-          type: string
-        eur:
-          type: string
-        eur_foil:
-          type: string
-        tix:
-          type: string
+      $ref: './schemas/prices.yaml'
     related_uris:
-      type: object
-      properties:
-        gatherer:
-          type: string
-          format: uri
-          nullable: true
-        tcgplayer_infinite_articles:
-          type: string
-          format: uri
-          nullable: true
-        tcgplayer_infinite_decks:
-          type: string
-          format: uri
-          nullable: true
-        edhrec:
-          type: string
-          format: uri
-          nullable: true
-        mtgtop8:
-          type: string
-          format: uri
-          nullable: true
+      $ref: './schemas/related_uris.yaml'
     purchase_uris:
-      type: object
-      properties:
-        tcgplayer:
-          type: string
-          format: uri
-          nullable: true
-        cardmarket:
-          type: string
-          format: uri
-          nullable: true
-        cardhoarder:
-          type: string
-          format: uri
-          nullable: true
+      $ref: './schemas/purchase_uris.yaml'
     set_types:
-      type: string
-      enum:
-        - core
-        - expansion
-        - masters
-        - masterpiece
-        - from_the_vault
-        - spellbook
-        - premium_deck
-        - duel_deck
-        - draft_innovation
-        - treasure_chest
-        - commander
-        - planechase
-        - archenemy
-        - vanguard
-        - funny
-        - starter
-        - box
-        - promo
-        - token
-        - memorabilia
+      $ref: './schemas/set_types.yaml'
     #The following are properties resused for the List Object
     object_list:
       type: string
