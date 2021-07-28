@@ -9,10 +9,10 @@ get:
       required: true
       schema:
         type: integer
-    - $ref: '.../parameters/format_json.yaml'
-    - $ref: '.../parameters/pretty_json.yaml'
+    - $ref: '../../parameters/format_json.yaml'
+    - $ref: '../../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '.../responses/rulings_list_json.yaml'
+      $ref: '../../responses/rulings_list_json.yaml'
     default:
-      $ref: '.../responses/error.yaml'
+      $ref: '../../responses/error.yaml'
