@@ -1,16 +1,16 @@
 type: object
 properties:
   object:
-    $ref: '#/components/schemas/object_list.yaml'
+    $ref: '../schemas/object_list.yaml'
   has_more:
-    $ref: '#/components/schemas/has_more.yaml'
+    $ref: '../schemas/has_more.yaml'
   next_page:
-    $ref: '#/components/schemas/next_page.yaml'
+    $ref: '../schemas/next_page.yaml'
   total_cards:
-    $ref: '#/components/schemas/total_cards.yaml'
+    $ref: '../schemas/total_cards.yaml'
   warnings:
-    $ref: '#/components/schemas/warnings.yaml'
+    $ref: '../schemas/warnings.yaml'
   data:
     type: array
     items:
-      $ref: '#/components/schemas/card.yaml'
+      $ref: '../schemas/card.yaml'

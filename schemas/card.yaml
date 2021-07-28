@@ -66,20 +66,20 @@ properties:
     description: "An array of Card Face objects, if this card is multifaced."
     type: array
     items:
-      $ref: './schemas/card_face.yaml'
+      $ref: '../schemas/card_face.yaml'
     nullable: true
   cmc:
     description: "The card’s converted mana cost. Note that some funny cards have fractional mana costs."
     type: number
   color_identity:
     description: "This card’s color identity."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
   color_indicator:
     description: "The colors in this card’s color indicator, if any. A null value for this field indicates the card does not have one."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
   colors:
     description: "This card’s colors, if the overall card has colors defined by the rules. Otherwise the colors will be on the card_faces objects, see below."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
   edhrec_rank:
     description: "This card’s overall rank/popularity on EDHREC. Not all cards are ranked."
     type: integer
@@ -101,7 +101,7 @@ properties:
     type: string
   legalities:
     description: "An object describing the legality of this card across play formats. Possible legalities are legal, not_legal, restricted, and banned."
-    $ref: './schemas/legalities.yaml'
+    $ref: '../schemas/legalities.yaml'
   life_modifier:
     description: "This card’s life modifier, if it is Vanguard card. This value will contain a delta, such as +2."
     type: string
@@ -129,7 +129,7 @@ properties:
     type: string
   produced_mana:
     description: "Colors of mana that this card could produce."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
     nullable: true
   reserved:
     description: "True if this card is on the Reserved List."
@@ -206,7 +206,7 @@ properties:
     nullable: true
   prices:
     description: "An object containing daily price information for this card, including usd, usd_foil, eur, and tix prices, as strings."
-    $ref: './schemas/prices.yaml'
+    $ref: '../schemas/prices.yaml'
   printed_name:
     description: "The localized name printed on this card, if any."
     type: string
@@ -230,13 +230,13 @@ properties:
     nullable: true
   purchase_uris:
     description: "An object providing URIs to this card’s listing on major marketplaces."
-    $ref: './schemas/purchase_uris.yaml'
+    $ref: '../schemas/purchase_uris.yaml'
   rarity:
     description: "This card’s rarity. One of common, uncommon, rare, special, mythic, or bonus."
     type: string
   related_uris:
     description: "An object providing URIs to this card’s listing on other Magic: The Gathering online resources."
-    $ref: './schemas/related_uris.yaml'
+    $ref: '../schemas/related_uris.yaml'
   released_at:
     description: "The date this card was first released."
     type: string

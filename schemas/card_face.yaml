@@ -10,7 +10,7 @@ properties:
     nullable: true
   colors:
     description: "This face’s colors, if the game defines colors for the individual face of this card."
-    $ref: './schemas/color_array.yaml'
+    $ref: '../schemas/color_array.yaml'
     nullable: true
   flavor_text:
     description: "The flavor text printed on this face, if any."
@@ -23,7 +23,7 @@ properties:
     nullable: true
   image_uris:
     description: "An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead."
-    $ref: './schemas/image_uris.yaml'
+    $ref: '../schemas/image_uris.yaml'
     nullable: true
   loyality:
     description: "This face’s loyalty, if any."
