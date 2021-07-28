@@ -1,6 +1,5 @@
 name: format
 in: query
-required: false
 description: "The data format to return. This method only supports json."
 schema:
   type: string
