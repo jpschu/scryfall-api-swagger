@@ -15,14 +15,14 @@ get:
     schema:
       type: boolean
       default: false
-  - $ref: '../parameters/format_json.yaml'
-  - $ref: '../parameters/pretty_json.yaml'
+  - $ref: '.../parameters/format_json.yaml'
+  - $ref: '.../parameters/pretty_json.yaml'
   responses:
     200:
       description: success
       content:
         application/json:
           schema:
-            $ref: '../schemas/catalog.yaml'
+            $ref: '.../schemas/catalog.yaml'
     default:
-      $ref: '../responses/error.yaml'
+      $ref: '.../responses/error.yaml'
