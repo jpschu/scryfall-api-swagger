@@ -1,0 +1,4 @@
+description: "If there is a page beyond the current page, this field will contain a full API URI to that page. You may submit a HTTP GET request to that URI to continue paginating forward on this List."
+type: string
+format: uri
+nullable: true

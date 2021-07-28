@@ -1,0 +1,2 @@
+description: "True if this List is paginated and there is a page beyond the current page."
+type: boolean

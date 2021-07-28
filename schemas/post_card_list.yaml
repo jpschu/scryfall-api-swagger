@@ -1,0 +1,20 @@
+type: object
+properties:
+  object:
+    $ref: './schemas/object_list.yaml'
+  not_found:
+    type: array
+    items:
+      type: string
+  has_more:
+    $ref: './schemas/has_more.yaml'
+  next_page:
+    $ref: './schemas/next_page.yaml'
+  total_cards:
+    $ref: './schemas/total_cards.yaml'
+  warnings:
+    $ref: './schemas/warnings.yaml'
+  data:
+    type: array
+    items:
+      $ref: './schemas/card.yaml'
