@@ -1,5 +1,6 @@
-description: error
-content:
-  application/json:
-    schema:
-      $ref: '../schemas/error.yaml'
+default:
+  description: error
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/error.yaml'
