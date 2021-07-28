@@ -26,21 +26,6 @@ get:
     - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      description: success
-        content:
-          application/json:
-            schema:
-              $ref: '../schemas/card.yaml'
-          text/plain; charset=utf-8:
-            schema:
-              type: string
-          image/jpeg:
-            schema:
-              type: string
-              format: binary
+      $ref: '../responses/card_json.yaml'
     default:
-      description: error
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/error.yaml'
+      $ref: '../responses/error.yaml'
