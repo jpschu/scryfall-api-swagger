@@ -28,7 +28,7 @@ properties:
     type: boolean
   colors:
     description: "An array of colors that this symbol represents."
-    $ref: './schemas/color_array.yaml'
+    $ref: './color_array.yaml'
   gatherer_alternates:
     description: "An array of plaintext versions of this symbol that Gatherer uses on old cards to describe original printed text. For example: {W} has [\"oW\", \"ooW\"] as alternates."
     type: string
