@@ -1,0 +1,36 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a single card with the given set code and collector number. You may optionally also append a lang part to the URL to retrieve a non-English version of the card."
+  parameters:
+    - name: code
+      in: path
+      description: "The three to five-letter set code."
+      required: true
+      schema:
+        type: string
+    - name: number
+      in: path
+      description: "The collector number."
+      required: true
+      schema:
+        type: string
+    - name: lang
+      in: path
+      description: "The 2-3 character language code."
+      required: true
+      schema:
+        type: string #TODO: language data type
+    - $ref: '../parameters/format_multi.yaml'
+    - $ref: '../parameters/face.yaml'
+    - $ref: '../parameters/version.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/card.yaml'
+    default:
+      $ref: '../responses/error.yaml'

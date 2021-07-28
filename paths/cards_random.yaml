@@ -1,0 +1,35 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a single random Card object. The optional parameter q supports the same fulltext search system that the main site uses. Providing q will filter the pool of cards before returning a random entry."
+  parameters:
+    - name: q
+      in: query
+      description: "An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded."
+      schema:
+        type: string
+    - name: format
+      in: query
+      description: "The data format to return json, text, or image. Defaults to json."
+      schema:
+        type: string
+    - name: face
+      in: query
+      description: "If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face."
+      schema:
+        type: string
+    - name: version
+      in: query
+      description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
+      schema:
+        type: string
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/card.yaml'
+    default:
+      $ref: '../responses/error.yaml'
