@@ -28,7 +28,5 @@ get:
   responses:
     200:
       $ref: '../responses/card_json.yaml'
-      $ref: '../responses/card_jpeg.yaml'
-      $ref: '../responses/card_text.yaml'
     default:
       $ref: '../responses/error.yaml'
