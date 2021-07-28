@@ -43,47 +43,17 @@ paths:
     $ref: './paths/cards_code_number_lang.yaml'
   /cards/{code}/{number}:
     $ref: './paths/cards_code_number.yaml'
-  /cards/multiverse/id:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/mtgo/id:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/arena/id:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/tcgplayer/id:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/cardmarket/id:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /cards/id:
+  /cards/multiverse/{id}:
+    $ref: './paths/cards_multiverse_id.yaml'
+  /cards/mtgo/{id}:
+    $ref: './paths/cards_mtgo_id.yaml'
+  /cards/arena/{id}:
+    $ref: './paths/cards_arena_id.yaml'
+  /cards/tcgplayer/{id}:
+    $ref: './paths/cards_tcgplayer_id.yaml'
+  /cards/cardmarket/{id}:
+    $ref: './paths/cards_cardmarket_id.yaml'
+  /cards/{id}:
     get:
       tags:
         - cards

@@ -1,20 +1,14 @@
 get:
   tags:
     - cards
-  summary: "Returns a single card with the given set code and collector number. You may optionally also append a lang part to the URL to retrieve a non-English version of the card."
+  summary: "Returns a single card with the given MTGO ID (also known as the Catalog ID). The ID can either be the card’s mtgo_id or its mtgo_foil_id."
   parameters:
-    - name: code
+    - name: id
       in: path
-      description: "The three to five-letter set code."
+      description: "The MTGO ID."
       required: true
       schema:
-        type: string
-    - name: number
-      in: path
-      description: "The collector number."
-      required: true
-      schema:
-        type: string
+        type: integer
     - $ref: '../parameters/format_multi.yaml'
     - $ref: '../parameters/face.yaml'
     - $ref: '../parameters/version.yaml'
