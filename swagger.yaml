@@ -64,7 +64,7 @@ paths:
   /cards/{code}/{number}/rulings:
     $ref: './paths/rulings/cards_code_number_rulings.yaml'
   /cards/{id}/rulings:
-    $ref: './paths/cards_id_rulings.yaml'
+    $ref: './paths/rulings/cards_id_rulings.yaml'
   /symbology:
     get:
       tags:
