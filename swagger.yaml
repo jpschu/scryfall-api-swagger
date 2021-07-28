@@ -22,22 +22,7 @@ tags:
     description: "OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available.Some Scryfall API methods are restricted to valid applications, and registered applications receive increased API limits.In addition, your application can implement an OAuth workflow that allows people with Scryfall accounts to grant your application programatic access to their data."
 paths:
   /sets:
-    get:
-      tags:
-        - sets
-      summary: "Returns a List object of all Sets on Scryfall."
-      parameters:
-        - $ref: '#/components/parameters/formatJson'
-        - $ref: '#/components/parameters/prettyJson'
-      responses:
-        200:
-          description: success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/set_list'
-        default:
-          $ref: '#/components/responses/default'
+    $ref: './paths/sets.yaml'
   /sets/{code}:
     get:
       tags:
