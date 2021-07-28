@@ -198,7 +198,7 @@ paths:
           type: string
       - name: version
         in: query
-        description: "The image version to return when using the image format: \"small\", \"normal\", \"large\", \"png\", \"art_crop\", or \"border_crop\". Defaults to "large""
+        description: "The image version to return when using the image format: \"small\", \"normal\", \"large\", \"png\", \"art_crop\", or \"border_crop\". Defaults to \"large\""
         schema:
           type: string
       - $ref: '#/components/parameters/prettyJson'
@@ -216,7 +216,7 @@ paths:
       tags:
         - cards
       summary: "Returns a Catalog object containing up to 20 full English card names that could be autocompletions of the given string parameter. This method is designed for creating assistive UI elements that allow users to free-type card names. The names are sorted with the nearest match first, highly favoring results that begin with your given string. Spaces, punctuation, and capitalization are ignored. If q is less than 2 characters long, or if no names match, the Catalog will contain 0 items (instead of returning any errors)."
-      paramters:
+      parameters:
       - name: q
         in: query
         description: "The string to autocomplete."
@@ -286,7 +286,7 @@ paths:
         content:
           application/json:
             schema:
-              type: strings
+              type: string
       parameters:
         - $ref: '#/components/parameters/prettyJson'
       responses:
@@ -298,7 +298,7 @@ paths:
                 $ref: '#/components/schemas/post_card_list'
         default:
           $ref: '#/components/responses/default'
-  /cards/code/number/lang:
+  /cards/{code}/{number}/{lang}:
     get:
       tags:
         - cards
@@ -319,6 +319,7 @@ paths:
         - name: lang
           in: path
           description: "The 2-3 character language code."
+          required: true
           schema:
             type: string #TODO: language data type
         - $ref: '#/components/parameters/formatMulti'
