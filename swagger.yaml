@@ -23,48 +23,6 @@ tags:
 paths:
   /sets:
     $ref: './paths/sets.yaml'
-  /sets/{code}:
-    $ref: './paths/sets_code.yaml'
-  /sets/tcgplayer/{id}:
-    $ref: './paths/sets_tcgplayer_id.yaml'
-  /sets/{id}:
-    $ref: './paths/sets_id.yaml'
-  /cards/search:
-    $ref: './paths/cards_search.yaml'
-  /cards/named: #TODO: add extra help text
-    $ref: './paths/cards_named.yaml'
-  /cards/autocomplete:
-    $ref: './paths/cards_autocomplete.yaml'
-  /cards/random:
-    $ref: './paths/cards_random.yaml'
-  /cards/collection:
-    $ref: './paths/cards_collection.yaml'
-  /cards/{code}/{number}/{lang}:
-    $ref: './paths/cards_code_number_lang.yaml'
-  /cards/{code}/{number}:
-    $ref: './paths/cards_code_number.yaml'
-  /cards/multiverse/{id}:
-    $ref: './paths/cards_multiverse_id.yaml'
-  /cards/mtgo/{id}:
-    $ref: './paths/cards_mtgo_id.yaml'
-  /cards/arena/{id}:
-    $ref: './paths/cards_arena_id.yaml'
-  /cards/tcgplayer/{id}:
-    $ref: './paths/cards_tcgplayer_id.yaml'
-  /cards/cardmarket/{id}:
-    $ref: './paths/cards_cardmarket_id.yaml'
-  /cards/{id}:
-    $ref: './paths/cards_id.yaml'
-  /cards/multiverse/{id}/rulings:
-    $ref: './paths/cards_multiverse_id_rulings.yaml'
-  /cards/mtgo/{id}/rulings:
-    $ref: './paths/cards_mtgo_id_rulings.yaml'
-  /cards/arena/{id}/rulings:
-    $ref: './paths/cards_arena_id_rulings.yaml'
-  /cards/{code}/{number}/rulings:
-    $ref: './paths/cards_code_number_rulings.yaml'
-  /cards/{id}/rulings:
-    $ref: './paths/cards_id_rulings.yaml'
   /symbology:
     get:
       tags:
