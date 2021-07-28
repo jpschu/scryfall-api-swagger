@@ -3,18 +3,18 @@ get:
     - sets
   summary: "Returns a List object of all Sets on Scryfall."
   parameters:
-    - $ref: '../parameters/format_json.yaml'
-    - $ref: '../parameters/pretty_json.yaml'
+    - $ref: '../../parameters/format_json.yaml'
+    - $ref: '../../parameters/pretty_json.yaml'
   responses:
     200:
       description: success
       content:
         application/json:
           schema:
-            $ref: '../schemas/set_list.yaml'
+            $ref: '../../schemas/set_list.yaml'
     default:
       description: error
         content:
           application/json:
             schema:
-              $ref: '../schemas/error.yaml'
+              $ref: '../../schemas/error.yaml'

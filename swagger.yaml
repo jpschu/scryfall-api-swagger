@@ -22,7 +22,7 @@ tags:
     description: "OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available.Some Scryfall API methods are restricted to valid applications, and registered applications receive increased API limits.In addition, your application can implement an OAuth workflow that allows people with Scryfall accounts to grant your application programatic access to their data."
 paths:
   /sets:
-    $ref: './paths/sets.yaml'
+    $ref: './paths/sets/sets.yaml'
   /symbology:
     get:
       tags:
