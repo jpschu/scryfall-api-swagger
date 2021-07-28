@@ -1,0 +1,6 @@
+name: pretty
+in: query
+required: false
+description: "If true, the returned JSON will be prettified. Avoid using for production code."
+schema:
+  type: boolean

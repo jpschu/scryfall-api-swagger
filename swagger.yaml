@@ -695,41 +695,15 @@ components:
 
   parameters:
     formatJson:
-      name: format
-      in: query
-      required: false
-      description: "The data format to return. This method only supports json."
-      schema:
-        type: string
+      $ref: './parameters/format_json.yaml'
     prettyJson:
-      name: pretty
-      in: query
-      required: false
-      description: "If true, the returned JSON will be prettified. Avoid using for production code."
-      schema:
-        type: boolean
+      $ref: './parameters/pretty_json.yaml'
     formatMulti:
-      name: format
-      in: query
-      description: "The data format to return json, text, or image. Defaults to json."
-      schema:
-        type: string
+      $ref: './parameters/format_multi.yaml'
     face:
-      name: face
-      in: query
-      description: "If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face."
-      schema:
-        type: string
+      $ref: './parameters/face.yaml'
     version:
-      name: version
-      in: query
-      description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
-      schema:
-        type: string
+      $ref: './parameters/version.yaml'
   responses:
     default:
-      description: error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/error'
+      $ref: './responses/error.yaml'
