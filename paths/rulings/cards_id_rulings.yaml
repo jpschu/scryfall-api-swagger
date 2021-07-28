@@ -5,7 +5,7 @@ get:
   parameters:
     - name: id
       in: path
-      description: "	The Scryfall ID."
+      description: "The Scryfall ID."
       required: true
       schema:
         type: string
