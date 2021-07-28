@@ -1,0 +1,18 @@
+get:
+  tags:
+    - rulings
+  summary: "Returns rulings for a card with the given Magic: The Gathering Arena ID."
+  parameters:
+    - name: id
+      in: path
+      description: "The Arena ID."
+      required: true
+      schema:
+        type: integer
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/rulings_list_json.yaml'
+    default:
+      $ref: '../responses/error.yaml'

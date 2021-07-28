@@ -4,7 +4,7 @@ properties:
     description: "A computer-readable string indicating which company produced this ruling, either wotc or scryfall."
     type: string
   published_at:
-    description: "  The date when the ruling or note was published."
+    description: "The date when the ruling or note was published."
     type: string
     format: Date
   comment:
