@@ -20,4 +20,8 @@ get:
           schema:
             $ref: '../../schemas/set.yaml'
     default:
-      $ref: '../../responses/error.yaml'
+      description: error
+        content:
+          application/json:
+            schema:
+              $ref: '../../schemas/error.yaml'
