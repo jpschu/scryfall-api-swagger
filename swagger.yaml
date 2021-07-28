@@ -54,13 +54,7 @@ paths:
   /cards/cardmarket/{id}:
     $ref: './paths/cards_cardmarket_id.yaml'
   /cards/{id}:
-    get:
-      tags:
-        - cards
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/cards_id.yaml'
   /cards/multiverse/id/rulings:
     get:
       tags:
