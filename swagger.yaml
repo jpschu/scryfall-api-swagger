@@ -22,49 +22,49 @@ tags:
     description: "OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available.Some Scryfall API methods are restricted to valid applications, and registered applications receive increased API limits.In addition, your application can implement an OAuth workflow that allows people with Scryfall accounts to grant your application programatic access to their data."
 paths:
   /sets:
-    $ref: './paths/sets/sets.yaml'
+    $ref: './paths/sets.yaml'
   /sets/{code}:
-    $ref: './paths/sets/sets_code.yaml'
+    $ref: './paths/sets_code.yaml'
   /sets/tcgplayer/{id}:
-    $ref: './paths/sets/sets_tcgplayer_id.yaml'
+    $ref: './paths/sets_tcgplayer_id.yaml'
   /sets/{id}:
-    $ref: './paths/sets/sets_id.yaml'
+    $ref: './paths/sets_id.yaml'
   /cards/search:
-    $ref: './paths/cards/cards_search.yaml'
+    $ref: './paths/cards_search.yaml'
   /cards/named: #TODO: add extra help text
-    $ref: './paths/cards/cards_named.yaml'
+    $ref: './paths/cards_named.yaml'
   /cards/autocomplete:
-    $ref: './paths/cards/cards_autocomplete.yaml'
+    $ref: './paths/cards_autocomplete.yaml'
   /cards/random:
-    $ref: './paths/cards/cards_random.yaml'
+    $ref: './paths/cards_random.yaml'
   /cards/collection:
-    $ref: './paths/cards/cards_collection.yaml'
+    $ref: './paths/cards_collection.yaml'
   /cards/{code}/{number}/{lang}:
-    $ref: './paths/cards/cards_code_number_lang.yaml'
+    $ref: './paths/cards_code_number_lang.yaml'
   /cards/{code}/{number}:
-    $ref: './paths/cards/cards_code_number.yaml'
+    $ref: './paths/cards_code_number.yaml'
   /cards/multiverse/{id}:
-    $ref: './paths/cards/cards_multiverse_id.yaml'
+    $ref: './paths/cards_multiverse_id.yaml'
   /cards/mtgo/{id}:
-    $ref: './paths/cards/cards_mtgo_id.yaml'
+    $ref: './paths/cards_mtgo_id.yaml'
   /cards/arena/{id}:
-    $ref: './paths/cards/cards_arena_id.yaml'
+    $ref: './paths/cards_arena_id.yaml'
   /cards/tcgplayer/{id}:
-    $ref: './paths/cards/cards_tcgplayer_id.yaml'
+    $ref: './paths/cards_tcgplayer_id.yaml'
   /cards/cardmarket/{id}:
-    $ref: './paths/cards/cards_cardmarket_id.yaml'
+    $ref: './paths/cards_cardmarket_id.yaml'
   /cards/{id}:
-    $ref: './paths/cards/cards_id.yaml'
+    $ref: './paths/cards_id.yaml'
   /cards/multiverse/{id}/rulings:
-    $ref: './paths/rulings/cards_multiverse_id_rulings.yaml'
+    $ref: './paths/cards_multiverse_id_rulings.yaml'
   /cards/mtgo/{id}/rulings:
-    $ref: './paths/rulings/cards_mtgo_id_rulings.yaml'
+    $ref: './paths/cards_mtgo_id_rulings.yaml'
   /cards/arena/{id}/rulings:
-    $ref: './paths/rulings/cards_arena_id_rulings.yaml'
+    $ref: './paths/cards_arena_id_rulings.yaml'
   /cards/{code}/{number}/rulings:
-    $ref: './paths/rulings/cards_code_number_rulings.yaml'
+    $ref: './paths/cards_code_number_rulings.yaml'
   /cards/{id}/rulings:
-    $ref: './paths/rulings/cards_id_rulings.yaml'
+    $ref: './paths/cards_id_rulings.yaml'
   /symbology:
     get:
       tags:

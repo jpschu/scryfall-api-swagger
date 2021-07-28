@@ -23,9 +23,9 @@ get:
       description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
       schema:
         type: string
-    - $ref: '../../parameters/pretty_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../../responses/card_json.yaml'
+      $ref: '../responses/card_json.yaml'
     default:
-      $ref: '../../responses/error.yaml'
+      $ref: '../responses/error.yaml'

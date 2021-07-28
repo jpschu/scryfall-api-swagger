@@ -9,13 +9,13 @@ post:
         schema:
           type: string
   parameters:
-    - $ref: '../../parameters/pretty_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
       description: success
       content:
         application/json:
           schema:
-            $ref: '../../schemas/post_card_list.yaml'
+            $ref: '../schemas/post_card_list.yaml'
     default:
-      $ref: '../../responses/error.yaml'
+      $ref: '../responses/error.yaml'

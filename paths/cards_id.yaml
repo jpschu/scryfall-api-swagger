@@ -10,12 +10,12 @@ get:
       schema:
         type: string
         format: uuid
-    - $ref: '../../parameters/format_multi.yaml'
-    - $ref: '../../parameters/face.yaml'
-    - $ref: '../../parameters/version.yaml'
-    - $ref: '../../parameters/pretty_json.yaml'
+    - $ref: '../parameters/format_multi.yaml'
+    - $ref: '../parameters/face.yaml'
+    - $ref: '../parameters/version.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../../responses/card_json.yaml'
+      $ref: '../responses/card_json.yaml'
     default:
-      $ref: '../../responses/error.yaml'
+      $ref: '../responses/error.yaml'
