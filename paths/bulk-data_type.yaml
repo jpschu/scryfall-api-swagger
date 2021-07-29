@@ -4,8 +4,9 @@ get:
   summary: "Returns a single Bulk Data object with the given type."
   parameters:
     - name: type
-      type: string
       required: true
+      schema:
+        type: string
     - $ref: '../parameters/format_json_file.yaml'
     - $ref: '../parameters/pretty_json.yaml'
   responses:

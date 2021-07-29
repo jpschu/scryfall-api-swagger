@@ -4,9 +4,10 @@ get:
   summary: "Returns a single Bulk Data object with the given id."
   parameters:
     - name: id
-      type: string
-      format: uuid
       required: true
+      schema:
+        type: string
+        format: uuid
     - $ref: '../parameters/format_json_file.yaml'
     - $ref: '../parameters/pretty_json.yaml'
   responses:
