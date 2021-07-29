@@ -29,6 +29,8 @@ paths:
     $ref: './paths/sets_tcgplayer_id.yaml'
   /sets/{id}:
     $ref: './paths/sets_id.yaml'
+  /cards/search:
+    $ref: './paths/cards_search.yaml'
   /symbology:
     get:
       tags:
