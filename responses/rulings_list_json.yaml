@@ -3,4 +3,4 @@
   content:
     application/json:
       schema:
-        $ref: '../schemas/rulings_list.yaml'
+        $ref: '../schemas/ruling_list.yaml'
