@@ -55,6 +55,16 @@ paths:
     $ref: './paths/cards_cardmarket_id.yaml'
   /cards/{id}:
     $ref: './paths/cards_id.yaml'
+  /cards/multiverse/{id}/rulings:
+    $ref: './paths/cards_multiverse_id_rulings.yaml'
+  /cards/mtgo/{id}/rulings:
+    $ref: './paths/cards_mtgo_id_rulings.yaml'
+  /cards/arena/{id}/rulings:
+    $ref: './paths/cards_arena_id_rulings.yaml'
+  /cards/{code}/{number}/rulings:
+    $ref: './paths/cards_code_number_rulings.yaml'
+  /cards/{id}/rulings:
+    $ref: './paths/cards_id_rulings.yaml'
   /symbology:
     get:
       tags:
