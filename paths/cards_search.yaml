@@ -40,7 +40,11 @@ get:
     schema:
       type: integer
       default: 1
-  - $ref: '../parameters/format_json.yaml'
+  - name: format
+    in: query
+    description: "The data format to return: json or csv. Defaults to json."
+    schema: string
+    default: "json"
   - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
