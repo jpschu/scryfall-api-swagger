@@ -15,4 +15,4 @@ get:
     200:
       $ref: '../responses/set_json.yaml#/200'
     default:
-      $ref: '../responses/set_json.yaml#/default'
+      $ref: '../responses/default_error.yaml#/default'
