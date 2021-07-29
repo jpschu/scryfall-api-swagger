@@ -20,13 +20,13 @@ get:
       description: "The 2-3 character language code."
       required: true
       schema:
-        type: string #TODO: language data type
+        type: string #TODO: not sure if language type can be explained here
     - $ref: '../parameters/format_multi.yaml'
     - $ref: '../parameters/face.yaml'
     - $ref: '../parameters/version.yaml'
     - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../responses/card_json.yaml'
+      $ref: '../responses/card_multi_format.yaml#/200'
     default:
-      $ref: '../responses/error.yaml'
+      $ref: '../responses/default_error.yaml#/default'

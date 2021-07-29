@@ -39,6 +39,8 @@ paths:
     $ref: './paths/cards_random.yaml'
   /cards/collection:
     $ref: './paths/cards_collection.yaml'
+  /cards/{code}/{number}/{lang}:
+    $ref: './paths/cards_code_number_lang.yaml'
   /symbology:
     get:
       tags:
