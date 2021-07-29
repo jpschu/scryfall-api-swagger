@@ -4,18 +4,15 @@ post:
   summary: "Accepts a JSON array of card identifiers, and returns a List object with the collection of requested cards. A maximum of 75 card references may be submitted per request. The request must be posted with Content-Type as application/json." #TODO: add card identifiers and double check post and post schema
   requestBody:
     description: "An object with an array of JSON objects, each one a card identifier."
+    required: true
     content:
       application/json:
         schema:
-          type: string
+          $ref: '../schemas/card_identifiers.yaml' #TODO: this still isnt right so ill have to come back once i go through the others
   parameters:
     - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      description: success
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/post_card_list.yaml'
+      $ref: '../responses/card_multi_format.yaml#/200'
     default:
-      $ref: '../responses/error.yaml'
+      $ref: '../responses/default_error.yaml#/default'

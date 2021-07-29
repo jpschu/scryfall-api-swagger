@@ -35,6 +35,10 @@ paths:
     $ref: './paths/cards_named.yaml'
   /cards/autocomplete:
     $ref: './paths/cards_autocomplete.yaml'
+  /cards/random:
+    $ref: './paths/cards_random.yaml'
+  /cards/collection:
+    $ref: './paths/cards_collection.yaml'
   /symbology:
     get:
       tags:
