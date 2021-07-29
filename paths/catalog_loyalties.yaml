@@ -1,7 +1,7 @@
 get:
   tags:
     - catalog
-  summary: "Returns a list of all nontoken English card names in Scryfall’s database. Values are updated as soon as a new card is entered for spoiler seasons."
+  summary: "Returns a Catalog of all possible values for a Planeswalker’s loyalty in Scryfall’s database. Values are updated as soon as a new card is entered for spoiler seasons."
   parameters:
     - $ref: '../parameters/format_json.yaml'
     - $ref: '../parameters/pretty_json.yaml'

@@ -72,125 +72,35 @@ paths:
   /catalog/card-names:
     $ref: './paths/catalog_card-names.yaml'
   /catalog/artist-names:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_artist-names.yaml'
   /catalog/word-bank:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_word-bank.yaml'
   /catalog/creature-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_creature-types.yaml'
   /catalog/planeswalker-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_planeswalker-types.yaml'
   /catalog/land-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_land-types.yaml'
   /catalog/artifact-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_artifact-types.yaml'
   /catalog/enchantment-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_enchantment-types.yaml'
   /catalog/spell-types:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_spell-types.yaml'
   /catalog/powers:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /catalog/touighnesses:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_powers.yaml'
+  /catalog/toughnesses:
+    $ref: './paths/catalog_toughnesses.yaml'
   /catalog/loyalties:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_loyalties.yaml'
   /catalog/watermarks:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_watermarks.yaml'
   /catalog/keyword-abilities:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
-  /catalog/ketword-actions:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_keyword-abilities.yaml'
+  /catalog/keyword-actions:
+    $ref: './paths/catalog_keyword-actions.yaml'
   /catalog/ability-words:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_ability-words.yaml'
   /bulk-data:
     get:
       tags:
