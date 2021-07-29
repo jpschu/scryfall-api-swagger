@@ -102,13 +102,7 @@ paths:
   /catalog/ability-words:
     $ref: './paths/catalog_ability-words.yaml'
   /bulk-data:
-    get:
-      tags:
-        - bulk data
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/bulk-data.yaml'
   /bulk-data/id:
     get:
       tags:

@@ -1,32 +1,35 @@
 type: object
 properties:
+  object:
+    type: string
+    default: "bulk-date"
   id:
-    description: ""
+    description: "A unique ID for this bulk item."
     type: string
     format: uuid
   uri:
-    description: ""
+    description: "The Scryfall API URI for this file."
     type: string
     format: uri
   type:
-    description: ""
+    description: "A computer-readable string for the kind of bulk item."
     type: string
   name:
-    description: ""
+    description: "A human-readable name for this file."
     type: string
   description:
-    description: ""
+    description: "A human-readable description for this file."
     type: string
   download_uri:
-    description: ""
+    description: "The URI that hosts this bulk file for fetching."
     type: string
     format: uri
   updated_at:
-    description: ""
+    description: "The time when this file was last updated."
     type: string
     format: "date-time"
   compressed_size:
-    description: ""
+    description: "The size of this file in integer bytes."
     type: integer
   content_type:
     description: "The MIME type of this file. ex: \"application/json\""
