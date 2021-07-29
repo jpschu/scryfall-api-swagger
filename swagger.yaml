@@ -70,13 +70,7 @@ paths:
   /symbology/parse-mana:
     $ref: './paths/symbology_parse-mana.yaml'
   /catalog/card-names:
-    get:
-      tags:
-        - catalog
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/catalog_card-names.yaml'
   /catalog/artist-names:
     get:
       tags:
