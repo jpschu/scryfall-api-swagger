@@ -1,0 +1,5 @@
+name: format
+in: query
+description: "The data format to return: json or file. Defaults to json."
+schema:
+  type: string

@@ -104,21 +104,9 @@ paths:
   /bulk-data:
     $ref: './paths/bulk-data.yaml'
   /bulk-data/id:
-    get:
-      tags:
-        - bulk data
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/bulk-data_id.yaml'
   /bulk-data/type:
-    get:
-      tags:
-        - bulk data
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/bulk-data_type.yaml'
   /account:
     get:
       tags:
