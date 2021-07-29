@@ -1,6 +1,6 @@
 get:
   tags:
-    - sets
+    - card symbols
   summary: "Parses the given mana cost parameter and returns Scryfall’s interpretation. The server understands most community shorthand for mana costs (such as 2WW for {2}{W}{W}). Symbols can also be out of order, lowercase, or have multiple colorless costs (such as 2{g}2 for {4}{G}). If part of the string could not be understood, the server will return an Error object describing the problem."
   parameters:
     - name: cost

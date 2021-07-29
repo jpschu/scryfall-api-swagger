@@ -1,6 +1,6 @@
 get:
   tags:
-    - sets
+    - card symbols
   summary: "Returns a List of all Card Symbols."
   parameters:
     - $ref: '../parameters/format_json.yaml'
