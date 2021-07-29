@@ -1,7 +1,7 @@
 get:
   tags:
     - cards
-  summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation under the list schema and the Error type  to understand all of the possible output from this method. If only one card is found, this method will still return a List." #TODO: need error type section
+  summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation under the list schema and the Error type  to understand all of the possible output from this method. If only one card is found, this method will still return a List." #TODO: need error type section and order and unique
   parameters:
   - name: q
     in: query
@@ -12,6 +12,11 @@ get:
   - name: unique
     in: query
     description: "The strategy for omitting similar cards. See below."
+    schema:
+      type: string
+  - name: order
+    in: query
+    description: "The method to sort returned cards. See below."
     schema:
       type: string
   - name: dir
@@ -43,19 +48,12 @@ get:
   - name: format
     in: query
     description: "The data format to return: json or csv. Defaults to json."
-    schema: string
-    default: "json"
+    schema:
+      type: string
+      default: "json"
   - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      description: success
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/card_list.yaml'
+      $ref: '../responses/card_search_json_csv.yaml#/200'
     default:
-      description: error
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/error.yaml'
+      $ref: '../responses/default_error.yaml#/default'
