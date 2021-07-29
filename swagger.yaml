@@ -31,6 +31,8 @@ paths:
     $ref: './paths/sets_id.yaml'
   /cards/search:
     $ref: './paths/cards_search.yaml'
+  /cards/named:
+    $ref: './paths/cards_named.yaml'
   /symbology:
     get:
       tags:
