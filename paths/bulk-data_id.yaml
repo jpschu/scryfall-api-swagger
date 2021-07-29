@@ -4,6 +4,7 @@ get:
   summary: "Returns a single Bulk Data object with the given id."
   parameters:
     - name: id
+      in: path
       required: true
       schema:
         type: string

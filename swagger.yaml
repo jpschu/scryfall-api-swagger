@@ -103,9 +103,9 @@ paths:
     $ref: './paths/catalog_ability-words.yaml'
   /bulk-data:
     $ref: './paths/bulk-data.yaml'
-  /bulk-data/id:
+  /bulk-data/{id}:
     $ref: './paths/bulk-data_id.yaml'
-  /bulk-data/type:
+  /bulk-data/{type}:
     $ref: './paths/bulk-data_type.yaml'
   /account:
     get:
