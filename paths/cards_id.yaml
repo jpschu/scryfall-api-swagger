@@ -16,6 +16,6 @@ get:
     - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../responses/card_json.yaml'
+      $ref: '../responses/card_multi_format.yaml#/200'
     default:
-      $ref: '../responses/error.yaml'
+      $ref: '../responses/default_error.yaml#/default'
