@@ -14,6 +14,6 @@ get:
     - $ref: '../parameters/pretty_json.yaml'
   responses:
     200:
-      $ref: '../responses/rulings_list_json.yaml'
+      $ref: '../responses/rulings_list_json.yaml#/200'
     default:
-      $ref: '../responses/error.yaml'
+      $ref: '../responses/default_error.yaml#/default'
