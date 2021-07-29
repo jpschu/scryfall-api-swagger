@@ -6,15 +6,4 @@ get:
     - $ref: '../parameters/format_json.yaml'
     - $ref: '../parameters/pretty_json.yaml'
   responses:
-    200:
-      description: success
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/set_list.yaml'
-    default:
-      description: error
-      content:
-        application/json:
-          schema:
-            $ref: '../schemas/error.yaml'
+    $ref: '../responses/set_list_json.yaml'
