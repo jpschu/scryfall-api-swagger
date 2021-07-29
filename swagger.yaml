@@ -33,6 +33,8 @@ paths:
     $ref: './paths/cards_search.yaml'
   /cards/named:
     $ref: './paths/cards_named.yaml'
+  /cards/autocomplete:
+    $ref: './paths/cards_autocomplete.yaml'
   /symbology:
     get:
       tags:
