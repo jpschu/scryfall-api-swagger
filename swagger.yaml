@@ -23,6 +23,12 @@ tags:
 paths:
   /sets:
     $ref: './paths/sets.yaml'
+  /sets/{code}:
+    $ref: './paths/sets_code.yaml'
+  /sets/tcgplayer/{id}:
+    $ref: './paths/sets_tcgplayer_id.yaml'
+  /sets/{id}:
+    $ref: './paths/sets_id.yaml'
   /symbology:
     get:
       tags:
