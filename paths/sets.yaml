@@ -11,4 +11,10 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../schemas/total_cards.yaml'
+            $ref: '../schemas/set_list.yaml'
+    default:
+      description: error
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/error.yaml'
