@@ -1,0 +1,21 @@
+get:
+  tags:
+    - sets
+  summary: "Parses the given mana cost parameter and returns Scryfall’s interpretation. The server understands most community shorthand for mana costs (such as 2WW for {2}{W}{W}). Symbols can also be out of order, lowercase, or have multiple colorless costs (such as 2{g}2 for {4}{G}). If part of the string could not be understood, the server will return an Error object describing the problem."
+  parameters:
+    - name: cost
+      in: query
+      description: "The mana string to parse"
+      schema:
+        type: string
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/symbology_parse-mana_object.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

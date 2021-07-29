@@ -66,21 +66,9 @@ paths:
   /cards/{id}/rulings:
     $ref: './paths/cards_id_rulings.yaml'
   /symbology:
-    get:
-      tags:
-        - card symbols
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/symbology.yaml'
   /symbology/parse-mana:
-    get:
-      tags:
-        - card symbols
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: success
+    $ref: './paths/symbology_parse-mana.yaml'
   /catalog/card-names:
     get:
       tags:
