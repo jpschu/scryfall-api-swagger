@@ -122,7 +122,7 @@ components:
     OAuth2:
       type: oauth2
       flows:
-        authorizationCode:
+        implicit:
           authorizationUrl: https://scryfall.com/oauth/authorize
           scopes:
             read: You may only inspect data on a user’s account. No methods that change data will be allowed.
