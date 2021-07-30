@@ -10,6 +10,6 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../schemas/account.yaml'
+            $ref: '../schemas/application.yaml'
     default:
       $ref: '../responses/default_error.yaml#/default'
