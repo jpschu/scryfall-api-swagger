@@ -107,24 +107,8 @@ paths:
     $ref: './paths/bulk-data_id.yaml'
   /bulk-data/{type}:
     $ref: './paths/bulk-data_type.yaml'
-  /account:
-    get:
-      tags:
-        - application
-      summary: ""
-      security:
-        - OAuth2: [read]
-      responses:
-        200:
-          description: success
   /application:
-    get:
-      tags:
-        - application
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/account.yaml'
   /oauth/convert:
     get:
       tags:

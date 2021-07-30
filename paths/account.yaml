@@ -1,0 +1,15 @@
+get:
+  tags:
+    - application
+  summary: "Returns an object describing the currently authenticated Scryfall account. Required scope: read or higher"
+  security:
+    - OAuth2: [read]
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/account.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

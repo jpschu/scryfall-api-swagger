@@ -1,0 +1,17 @@
+type: object
+properties:
+  object:
+    type: string
+  id:
+    type: string
+    format: uuid
+  username:
+    type: string
+  display_name:
+    type: string
+  twitter:
+    type: string
+  verified:
+    type: boolean
+  supporter:
+    type: boolean
