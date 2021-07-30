@@ -1,0 +1,5 @@
+name: format
+in: query
+description: "The data format to return: json or file. Defaults to json. Note: Swagger is unable to download the file when using file format"
+schema:
+  type: string

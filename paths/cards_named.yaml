@@ -1,0 +1,31 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a single random Card object"
+  parameters:
+  - name: exact
+    in: query
+    description: "The exact card name to search for, case insenstive."
+    required: true
+    schema:
+      type: string
+  - name: fuzzy
+    in: query
+    description: "A fuzzy card name to search for."
+    required: true
+    schema:
+      type: string
+  - name: set
+    in: query
+    description: "A set code to limit the search to one set."
+    schema:
+      type: string
+  - $ref: '../parameters/format_multi.yaml'
+  - $ref: '../parameters/face.yaml'
+  - $ref: '../parameters/version.yaml'
+  - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/card_multi_format.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

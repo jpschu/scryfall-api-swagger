@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    description: "An unique ID for this card in Scryfall’s database."
+    type: string
+    format: uuid
+  object:
+    description: "A content type for this object, always related_card."
+    type: string
+  component:
+    description: "A field explaining what role this card plays in this relationship, one of token, meld_part, meld_result, or combo_piece."
+    type: string
+  name:
+    description: "The name of this particular related card."
+    type: string
+  type_line:
+    description: "The type line of this card."
+    type: string
+  uri:
+    description: "A URI where you can retrieve a full object describing this card on Scryfall’s API."
+    type: string
+    format: uri

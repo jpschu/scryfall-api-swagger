@@ -1,0 +1,18 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "scryfall_account"
+  id:
+    type: string
+    format: uuid
+  username:
+    type: string
+  display_name:
+    type: string
+  twitter:
+    type: string
+  verified:
+    type: boolean
+  supporter:
+    type: boolean

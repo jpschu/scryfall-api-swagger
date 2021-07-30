@@ -1,0 +1,71 @@
+type: object
+properties:
+  artist:
+    description: "The name of the illustrator of this card face. Newly spoiled cards may not have this field yet."
+    type: string
+    nullable: true
+  color_indicator:
+    description: "The colors in this face’s color indicator, if any."
+    $ref: '../schemas/color_array.yaml'
+    nullable: true
+  colors:
+    description: "This face’s colors, if the game defines colors for the individual face of this card."
+    $ref: '../schemas/color_array.yaml'
+    nullable: true
+  flavor_text:
+    description: "The flavor text printed on this face, if any."
+    type: string
+    nullable: true
+  illustration_id:
+    description: "A unique identifier for the card face artwork that remains consistent across reprints. Newly spoiled cards may not have this field yet."
+    type: string
+    format: uuid
+    nullable: true
+  image_uris:
+    description: "An object providing URIs to imagery for this face, if this is a double-sided card. If this card is not double-sided, then the image_uris property will be part of the parent object instead."
+    $ref: '../schemas/image_uris.yaml'
+    nullable: true
+  loyality:
+    description: "This face’s loyalty, if any."
+    type: string
+    nullable: true
+  mana_cost:
+    description: "The mana cost for this face. This value will be any empty string \"\" if the cost is absent. Remember that per the game rules, a missing mana cost and a mana cost of {0} are different values."
+    type: string
+  name:
+    description: "The name of this particular face."
+    type: string
+  object:
+    description: "A content type for this object, always card_face."
+    type: string
+  oracle_text:
+    description: "The Oracle text for this face, if any."
+    type: string
+    nullable: true
+  power:
+    description: "This face’s power, if any. Note that some cards have powers that are not numeric, such as *."
+    type: string
+    nullable: true
+  printed_name:
+    description: "The localized name printed on this face, if any."
+    type: string
+    nullable: true
+  printed_text:
+    description: "The localized text printed on this face, if any."
+    type: string
+    nullable: true
+  printed_type_line:
+    description: "The localized type line printed on this face, if any."
+    type: string
+    nullable: true
+  toughness:
+    description: "This face’s toughness, if any."
+    type: string
+    nullable: true
+  type_line:
+    description: "The type line of this particular face."
+    type: string
+  watermark:
+    description: "The watermark on this particulary card face, if any."
+    type: string
+    nullable: true

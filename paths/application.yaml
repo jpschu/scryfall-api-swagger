@@ -1,0 +1,15 @@
+get:
+  tags:
+    - application
+  summary: "Returns an object describing the currently authenticated application. Required authentication: Application"
+  security:
+    - OAuth2: [read]
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/application.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

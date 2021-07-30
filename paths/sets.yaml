@@ -1,0 +1,12 @@
+get:
+  tags:
+    - sets
+  summary: "Returns a List object of all Sets on Scryfall."
+  parameters:
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/set_list_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

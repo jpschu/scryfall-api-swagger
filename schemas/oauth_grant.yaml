@@ -1,0 +1,16 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "oauth_grant"
+  grant_id:
+    type: string
+    format: uuid
+  created_at:
+    type: string
+    format: date
+  revoked:
+    type: boolean
+  account:
+    nullable: true
+    $ref: '../schemas/account.yaml'

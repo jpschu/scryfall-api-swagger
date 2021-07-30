@@ -1,0 +1,22 @@
+post:
+  tags:
+    - application
+  summary: "Revokes the OAuth grant identified by the provided grant_id. The entire grant is immediately invalidated, no futher requests may be made using its grant_id or grant_secret. A minimal revoked version of the grant is returned as confirmation. The user must perform the full OAuth flow to establish a new grant with your application if they so desire. This method is designed to allow your application to proactively disconnect from this user’s Scryfall account from your side."
+  security:
+    - OAuth2: [read]
+  requestBody:
+    description: "Revoke an OAuth grant"
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/grant_id.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/oauth_grant.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

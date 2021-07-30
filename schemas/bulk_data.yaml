@@ -1,0 +1,39 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "bulk-data"
+  id:
+    description: "A unique ID for this bulk item."
+    type: string
+    format: uuid
+  uri:
+    description: "The Scryfall API URI for this file."
+    type: string
+    format: uri
+  type:
+    description: "A computer-readable string for the kind of bulk item."
+    type: string
+  name:
+    description: "A human-readable name for this file."
+    type: string
+  description:
+    description: "A human-readable description for this file."
+    type: string
+  download_uri:
+    description: "The URI that hosts this bulk file for fetching."
+    type: string
+    format: uri
+  updated_at:
+    description: "The time when this file was last updated."
+    type: string
+    format: "date-time"
+  compressed_size:
+    description: "The size of this file in integer bytes."
+    type: integer
+  content_type:
+    description: "The MIME type of this file. ex: \"application/json\""
+    type: string
+  content_encoding:
+    description: "The Content-Encoding encoding that will be used to transmit this file when you download it. ex. \"gzip\""
+    type: string

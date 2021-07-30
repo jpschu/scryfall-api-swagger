@@ -1,141 +1,130 @@
 openapi: "3.0.0"
 info:
-  version: "0.0.1"
+  version: "0.0.0"
   title: "Scryfall API Documentation"
-  description: "Scryfall provides a REST-like API for ingesting our card data programatically. The API exposes information available on the regular site in easy-to-consume formats."
+  description: "THIS SWAGGER/OPENAPI IS AN UNOFFICAL PROJECT NOT SPONSORED BY SCRYFALL: Scryfall provides a REST-like API for ingesting their card data programatically. The API exposes information available on the regular site in easy-to-consume formats. Original documentation is located on Scryfall's official website: https://scryfall.com/docs/api"
 servers:
   - url: "https://api.scryfall.com"
-    description: "gfycat api"
 tags:
-  - name: "cards"
-    description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
+  - name: sets
+    description: "A Set object represents a group of related Magic cards. All Card objects on Scryfall belong to exactly one set. Due to Magic’s long and complicated history, Scryfall includes many un-official sets as a way to group promotional or outlier cards together. Such sets will likely have a code that begins with p or t, such as pcel or tori. Official sets always have a three-letter set code, such as zen."
+  - name: cards
+    description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions). Cards are the API’s most complex object. You are encouraged to thoroughly read this document (https://scryfall.com/docs/api/cards) and also the article about layouts and images. (https://scryfall.com/docs/api/layouts)"
+  - name: rulings
+    description: "Rulings represent Oracle rulings, Wizards of the Coast set release notes, or Scryfall notes for a particular card.If two cards have the same name, they will have the same set of rulings objects. If a card has rulings, it usually has more than one.Rulings with a scryfall source have been added by the Scryfall team, either to provide additional context for the card, or explain how the card works in an unofficial format (such as Duel Commander)."
+  - name: card symbols
+    description: "A Card Symbol object represents an illustrated symbol that may appear in card’s mana cost or Oracle text. Symbols are based on the notation used in the Comprehensive Rules."
+  - name: catalog
+    description: "A Catalog object contains an array of Magic datapoints (words, card values, etc). Catalog objects are provided by the API as aids for building other Magic software and understanding possible values for a field on Card objects."
+  - name: bulk data
+    description: "Scryfall provides daily exports of our card data in bulk files. Each of these files is represented as a bulk_data object via the API. URLs for files change their timestamp each day, and can be fetched programmatically. Please note: Card objects in bulk data include price information, but prices should be considered dangerously stale after 24 hours. Only use bulk price information to track trends or provide a general estimate of card value. Prices are not updated frequently enough to power a storefront or sales system. You consume price information at your own risk. Updates to gameplay data (such as card names, Oracle text, mana costs, etc) are much less frequent. If you only need gameplay information, downloading card data once per week or right after set releases would most likely be sufficient. Every card type in every product is included, including planar cards, schemes, Vanguard cards, tokens, emblems, and funny cards. Make sure you’ve reviewed documentation for the Card type. Bulk data is only collected once every 12 hours. You can use the card API methods to retrieve fresh objects instead."
+  - name: application
+    description: "OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available.Some Scryfall API methods are restricted to valid applications, and registered applications receive increased API limits.In addition, your application can implement an OAuth workflow that allows people with Scryfall accounts to grant your application programatic access to their data."
 paths:
+  /sets:
+    $ref: './paths/sets.yaml'
+  /sets/{code}:
+    $ref: './paths/sets_code.yaml'
+  /sets/tcgplayer/{id}:
+    $ref: './paths/sets_tcgplayer_id.yaml'
+  /sets/{id}:
+    $ref: './paths/sets_id.yaml'
   /cards/search:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
+    $ref: './paths/cards_search.yaml'
   /cards/named:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
+    $ref: './paths/cards_named.yaml'
   /cards/autocomplete:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
+    $ref: './paths/cards_autocomplete.yaml'
   /cards/random:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      parameters:
-        - name: q
-          in: query
-          required: false
-          description: An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded.
-          schema:
-            type: string
-        - name: format
-          in: query
-          required: false
-          description: The data format to return json, text, or image. Defaults to json.
-          schema:
-            type: string
-        - name: face
-          in: query
-          required: false
-          description: If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face.
-          schema:
-            type: string
-        - name: version
-          in: query
-          required: false
-          description: The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large.
-          schema:
-            type: string
-        - name: pretty
-          in: query
-          required: false
-          description: If true, the returned JSON will be prettified. Avoid using for production code.
-          schema:
-            type: boolean
-      responses:
-        401:
-          description: "Unauthorized"
-        200:
-          description: "OK"
+    $ref: './paths/cards_random.yaml'
   /cards/collection:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/code/number/lang:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/multiverse/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/mtgo/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/arena/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/tcgplayer/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/cardmarket/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
-  /cards/id:
-    get:
-      tags:
-        - "cards"
-      summary: "Returns a single random Card object"
-      responses:
-        200:
-          description: "Ok"
+    $ref: './paths/cards_collection.yaml'
+  /cards/{code}/{number}/{lang}:
+    $ref: './paths/cards_code_number_lang.yaml'
+  /cards/{code}/{number}:
+    $ref: './paths/cards_code_number.yaml'
+  /cards/multiverse/{id}:
+    $ref: './paths/cards_multiverse_id.yaml'
+  /cards/mtgo/{id}:
+    $ref: './paths/cards_mtgo_id.yaml'
+  /cards/arena/{id}:
+    $ref: './paths/cards_arena_id.yaml'
+  /cards/tcgplayer/{id}:
+    $ref: './paths/cards_tcgplayer_id.yaml'
+  /cards/cardmarket/{id}:
+    $ref: './paths/cards_cardmarket_id.yaml'
+  /cards/{id}:
+    $ref: './paths/cards_id.yaml'
+  /cards/multiverse/{id}/rulings:
+    $ref: './paths/cards_multiverse_id_rulings.yaml'
+  /cards/mtgo/{id}/rulings:
+    $ref: './paths/cards_mtgo_id_rulings.yaml'
+  /cards/arena/{id}/rulings:
+    $ref: './paths/cards_arena_id_rulings.yaml'
+  /cards/{code}/{number}/rulings:
+    $ref: './paths/cards_code_number_rulings.yaml'
+  /cards/{id}/rulings:
+    $ref: './paths/cards_id_rulings.yaml'
+  /symbology:
+    $ref: './paths/symbology.yaml'
+  /symbology/parse-mana:
+    $ref: './paths/symbology_parse-mana.yaml'
+  /catalog/card-names:
+    $ref: './paths/catalog_card-names.yaml'
+  /catalog/artist-names:
+    $ref: './paths/catalog_artist-names.yaml'
+  /catalog/word-bank:
+    $ref: './paths/catalog_word-bank.yaml'
+  /catalog/creature-types:
+    $ref: './paths/catalog_creature-types.yaml'
+  /catalog/planeswalker-types:
+    $ref: './paths/catalog_planeswalker-types.yaml'
+  /catalog/land-types:
+    $ref: './paths/catalog_land-types.yaml'
+  /catalog/artifact-types:
+    $ref: './paths/catalog_artifact-types.yaml'
+  /catalog/enchantment-types:
+    $ref: './paths/catalog_enchantment-types.yaml'
+  /catalog/spell-types:
+    $ref: './paths/catalog_spell-types.yaml'
+  /catalog/powers:
+    $ref: './paths/catalog_powers.yaml'
+  /catalog/toughnesses:
+    $ref: './paths/catalog_toughnesses.yaml'
+  /catalog/loyalties:
+    $ref: './paths/catalog_loyalties.yaml'
+  /catalog/watermarks:
+    $ref: './paths/catalog_watermarks.yaml'
+  /catalog/keyword-abilities:
+    $ref: './paths/catalog_keyword-abilities.yaml'
+  /catalog/keyword-actions:
+    $ref: './paths/catalog_keyword-actions.yaml'
+  /catalog/ability-words:
+    $ref: './paths/catalog_ability-words.yaml'
+  /bulk-data:
+    $ref: './paths/bulk-data.yaml'
+  /bulk-data/{id}:
+    $ref: './paths/bulk-data_id.yaml'
+  /bulk-data/{type}:
+    $ref: './paths/bulk-data_type.yaml'
+  /account:
+    $ref: './paths/account.yaml'
+  /application:
+    $ref: './paths/application.yaml'
+  /oauth/convert:
+    $ref: './paths/oauth_convert.yaml'
+  /oauth/downgrade:
+    $ref: './paths/oauth_downgrade.yaml'
+  /oauth/revoke:
+    $ref: './paths/oauth_revoke.yaml'
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://scryfall.com/oauth/authorize
+          scopes:
+            read: You may only inspect data on a user’s account. No methods that change data will be allowed.
+            read_write: Full API access to this user’s account. You can use methods that update, delete, and add account data on behalf of the user.
+            ephemeral: This scope level will return a grant object to you containing the user’s public account information, and then revoke your access to their account immediately afterward. Useful for creating software such as polls or petitions that only need to make sure that a unique and valid account is signing or voting as a one-time action.

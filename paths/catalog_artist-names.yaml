@@ -1,0 +1,12 @@
+get:
+  tags:
+    - catalog
+  summary: "Returns a list of all canonical artist names in Scryfall’s database. This catalog won’t include duplicate, misspelled, or funny names for artists. Values are updated as soon as a new card is entered for spoiler seasons."
+  parameters:
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/catalog_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

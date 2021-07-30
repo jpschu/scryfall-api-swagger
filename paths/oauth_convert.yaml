@@ -1,0 +1,22 @@
+post:
+  tags:
+    - application
+  summary: "Exchanges an OAuth code for a full OAuth grant object. The returned object will contain the grant_secret that you should use for future requests inside the Authorization header for that account. Each code expires in 5 minutes, and can only be used once. Repeated requests sent to this method with the same code will fail. Ensure that you save both the grant_id and the grant_secret you receive, as well as recording any other data in the object that your application needs to run, such as the information inside the account object."
+  security:
+    - OAuth2: [read]
+  requestBody:
+    description: "Exchange an OAuth code for a grant object"
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/code.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/oauth_grant.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

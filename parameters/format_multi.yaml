@@ -1,0 +1,5 @@
+name: format
+in: query
+description: "The data format to return json, text, or image. Defaults to json. When using image, default is image/jpeg"
+schema:
+  type: string

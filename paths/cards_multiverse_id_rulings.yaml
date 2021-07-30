@@ -1,0 +1,18 @@
+get:
+  tags:
+    - rulings
+  summary: "Returns a List of rulings for a card with the given Multiverse ID. If the card has multiple multiverse IDs, this method can find either of them." #TODO: test formats
+  parameters:
+    - name: id
+      in: path
+      description: "The multiverse ID."
+      required: true
+      schema:
+        type: integer
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/rulings_list_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

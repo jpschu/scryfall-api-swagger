@@ -1,0 +1,59 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation under the list schema and the Error type  to understand all of the possible output from this method. If only one card is found, this method will still return a List. To learn more about the order and unqiue parameters - visit the official documenation (https://scryfall.com/docs/api/cards/search)"
+  parameters:
+  - name: q
+    in: query
+    required: true
+    description: "A fulltext search query. Make sure that your parameter is properly encoded."
+    schema:
+      type: string
+  - name: unique
+    in: query
+    description: "The strategy for omitting similar cards. See below."
+    schema:
+      type: string
+  - name: order
+    in: query
+    description: "The method to sort returned cards. See below."
+    schema:
+      type: string
+  - name: dir
+    in: query
+    description: "The direction to sort cards. See below."
+    schema:
+      type: string
+  - name: include_extras
+    in: query
+    description: "If true, extra cards (tokens, planes, etc) will be included. Equivalent to adding include:extras to the fulltext search. Defaults to false."
+    schema:
+      type: boolean
+  - name: include_multilingual
+    in: query
+    description: "If true, cards in every language supported by Scryfall will be included. Defaults to false."
+    schema:
+      type: boolean
+  - name: include_variations
+    in: query
+    description: "If true, rare care variants will be included, like the Hairy Runesword. Defaults to false."
+    schema:
+      type: boolean
+  - name: page
+    in: query
+    description: "The page number to return"
+    schema:
+      type: integer
+      default: 1
+  - name: format
+    in: query
+    description: "The data format to return: json or csv. Defaults to json."
+    schema:
+      type: string
+      default: "json"
+  - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/card_search_json_csv.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

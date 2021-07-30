@@ -1,0 +1,19 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a single random Card object. The optional parameter q supports the same fulltext search system that the main site uses. Providing q will filter the pool of cards before returning a random entry."
+  parameters:
+    - name: q
+      in: query
+      description: "An optional fulltext search query to filter the pool of random cards. Make sure that your parameter is properly encoded."
+      schema:
+        type: string
+    - $ref: '../parameters/format_multi.yaml'
+    - $ref: '../parameters/face.yaml'
+    - $ref: '../parameters/version.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/card_search_json_csv.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

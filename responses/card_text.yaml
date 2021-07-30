@@ -1,0 +1,5 @@
+description: success
+content:
+  text/plain; charset=utf-8:
+    schema:
+      type: string

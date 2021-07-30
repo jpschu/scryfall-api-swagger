@@ -1,0 +1,19 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "application"
+  client_id:
+    type: string
+    format: uuid
+  name:
+    type: string
+  homepage_uri:
+    type: string
+    format: uri
+  contact_uri:
+    type: string
+    format: uri
+  contact_email:
+    type: string
+    format: email

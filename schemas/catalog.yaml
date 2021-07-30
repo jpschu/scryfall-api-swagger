@@ -1,0 +1,17 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "catalog"
+  uri:
+    description: "A link to the current catalog on Scryfall’s API."
+    type: string
+    format: uri
+  total_values:
+    description: "The number of items in the data array."
+    type: integer
+  data:
+    description: "An array of datapoints, as strings."
+    type: array
+    items:
+      type: string

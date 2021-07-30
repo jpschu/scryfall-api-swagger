@@ -1,0 +1,25 @@
+description: "Each submitted card identifier must be a JSON object with one or more of the keys id, mtgo_id, multiverse_id, oracle_id, illustration_id, name, set, and collector_number. The following combinations are valid identifier schemas"
+type: object
+properties:
+  identifiers:
+    type: array
+    items:
+      type: object
+      properties:
+      anyOf:
+        - properties:
+            id:
+              type: string
+              format: uuid
+            mtgo_id:
+              type: integer
+            multiverse_id:
+              type: integer
+            oracle_id:
+              type: string
+              format: uuid
+            illustration_id:
+              type: string
+              format: uuid
+            name:
+              type: string

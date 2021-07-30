@@ -1,0 +1,19 @@
+get:
+  tags:
+    - rulings
+  summary: "Returns a List of rulings for a card with the given Scryfall ID."
+  parameters:
+    - name: id
+      in: path
+      description: "The Scryfall ID."
+      required: true
+      schema:
+        type: string
+        format: uuid
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/rulings_list_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

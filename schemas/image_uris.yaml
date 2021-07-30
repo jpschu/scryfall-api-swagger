@@ -1,0 +1,20 @@
+type: object
+properties:
+  small:
+    type: string
+    format: uri
+  normal:
+    type: string
+    format: uri
+  large:
+    type: string
+    format: uri
+  png:
+    type: string
+    format: uri
+  art_crop:
+    type: string
+    format: uri
+  border_crop:
+    type: string
+    format: uri

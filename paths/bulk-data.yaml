@@ -1,0 +1,11 @@
+get:
+  tags:
+    - bulk data
+  summary: "Returns a List of all Bulk Data items on Scryfall."
+  parameters:
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/bulk-data_list_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

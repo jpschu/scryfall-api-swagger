@@ -1,0 +1,22 @@
+post:
+  tags:
+    - application
+  summary: "Downgrades the scope of the OAuth grant identified by the submitted grant_id. If the scope of the grant is read_write, it will change to read. If the scope was already read, the grant object is returned unchanged (read is the lowest permission scope). Downgraded grants cannot be upgraded later, this change is permanent. This method is designed to allow your application to proactively relinquish rights to a user’s account if you no longer need read_write scope."
+  security:
+    - OAuth2: [read]
+  requestBody:
+    description: "Downgrade an OAuth grant"
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../schemas/grant_id.yaml'
+  responses:
+    200:
+      description: success
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/oauth_grant.yaml'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

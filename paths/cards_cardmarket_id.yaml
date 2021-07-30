@@ -1,0 +1,20 @@
+get:
+  tags:
+    - cards
+  summary: "Returns a single card with the given cardmarket_id, also known as the idProduct or the Product ID on Cardmarket’s APIs."
+  parameters:
+    - name: id
+      in: path
+      description: "The cardmarket_id."
+      required: true
+      schema:
+        type: integer
+    - $ref: '../parameters/format_multi.yaml'
+    - $ref: '../parameters/face.yaml'
+    - $ref: '../parameters/version.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/card_multi_format.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

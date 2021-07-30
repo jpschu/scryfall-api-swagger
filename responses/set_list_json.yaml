@@ -1,0 +1,12 @@
+200:
+  description: success
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/set_list.yaml'
+default:
+  description: error
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/error.yaml'

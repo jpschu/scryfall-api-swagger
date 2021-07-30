@@ -1,0 +1,9 @@
+200:
+  description: success
+  content:
+    application/json:
+      schema:
+        $ref: '../schemas/card_list.yaml'
+    text/csv:
+      schema:
+        type: string

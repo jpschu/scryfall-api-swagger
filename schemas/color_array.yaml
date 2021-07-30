@@ -1,0 +1,18 @@
+type: array
+items:
+  type: string
+description: >
+      Whenever the API presents set of Magic colors, the field will be an array that uses the uppercase, single-character abbreviations for those colors. For example, ["W","U"] represents something that is both white and blue. Colorless sources are denoted with an empty array [].
+      <br><br>
+      Common places were you might see this kind of array are a Card object’s colors and color_identity. When a color field is null or missing, it implies that that information is not pertinent for the current object. It does not imply that the object is colorless. Color arrays are not guaranteed to be in a particular order.
+      <br><br>
+      A list of color representations is provided below:
+       * `"W"` - Color: White | Basic Land: Plains
+
+       * `"U"` - Color: Blue | Basic Land: Island
+
+       * `"B"` - Color: Black | Basic Land: Swamp
+
+       * `"R"` - Color: Red | Basic Land: Mountain
+
+       * `"G"` - Color: Green | Basic Land: Forest

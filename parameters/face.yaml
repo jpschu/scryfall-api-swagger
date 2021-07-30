@@ -1,0 +1,5 @@
+name: face
+in: query
+description: "If using the image format and this parameter has the value back, the back face of the card will be returned. Will return a 422 if this card has no back face."
+schema:
+  type: string

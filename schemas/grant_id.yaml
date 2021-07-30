@@ -1,0 +1,5 @@
+type: object
+properties:
+  grant_id:
+    type: string
+    format: uuid

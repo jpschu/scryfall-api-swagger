@@ -1,0 +1,19 @@
+get:
+  tags:
+    - sets
+  summary: "Returns a Set with the given Scryfall id."
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: "The Scryfall ID."
+      schema:
+        type: string
+        format: uuid
+    - $ref: '../parameters/format_json.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/set_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

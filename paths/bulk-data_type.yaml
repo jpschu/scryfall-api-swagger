@@ -1,0 +1,17 @@
+get:
+  tags:
+    - bulk data
+  summary: "Returns a single Bulk Data object with the given type."
+  parameters:
+    - name: type
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: '../parameters/format_json_file.yaml'
+    - $ref: '../parameters/pretty_json.yaml'
+  responses:
+    200:
+      $ref: '../responses/bulk-data_json.yaml#/200'
+    default:
+      $ref: '../responses/default_error.yaml#/default'

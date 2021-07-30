@@ -1,0 +1,22 @@
+type: object
+properties:
+  object:
+    type: string
+    default: "mana_cost"
+  cost:
+    description: "The normalized cost, with correctly-ordered and wrapped mana symbols."
+    type: string
+  cmc:
+    description: "The converted mana cost. If you submit Un-set mana symbols, this decimal could include fractional parts."
+    type: number
+  colors:
+    $ref: '../schemas/color_array.yaml'
+  colorless:
+    description: "True if the cost is colorless."
+    type: boolean
+  monocolored:
+    description: "True if the cost is monocolored."
+    type: boolean
+  multicolored:
+    description: "True if the cost is multicolored."
+    type: boolean

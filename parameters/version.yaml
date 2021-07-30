@@ -1,0 +1,5 @@
+name: version
+in: query
+description: "The image version to return when using the image format small, normal, large, png, art_crop, or border_crop. Defaults to large."
+schema:
+  type: string
