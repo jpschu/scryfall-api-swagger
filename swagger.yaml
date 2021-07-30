@@ -114,21 +114,9 @@ paths:
   /oauth/convert:
     $ref: './paths/oauth_convert.yaml'
   /oauth/downgrade:
-    get:
-      tags:
-        - application
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/oauth_downgrade.yaml'
   /oauth/revoke:
-    get:
-      tags:
-        - application
-      summary: ""
-      responses:
-        200:
-          description: success
+    $ref: './paths/oauth_revoke.yaml'
 components:
   securitySchemes:
     OAuth2:

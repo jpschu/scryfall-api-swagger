@@ -17,6 +17,6 @@ post:
       content:
         application/json:
           schema:
-            $ref: '../schemas/application.yaml'
+            $ref: '../schemas/oauth_grant.yaml'
     default:
       $ref: '../responses/default_error.yaml#/default'
