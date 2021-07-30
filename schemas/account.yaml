@@ -2,6 +2,7 @@ type: object
 properties:
   object:
     type: string
+    default: "scryfall_account"
   id:
     type: string
     format: uuid
