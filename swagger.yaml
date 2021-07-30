@@ -2,14 +2,14 @@ openapi: "3.0.0"
 info:
   version: "0.0.0"
   title: "Scryfall API Documentation"
-  description: "Scryfall provides a REST-like API for ingesting our card data programatically. The API exposes information available on the regular site in easy-to-consume formats."
+  description: "THIS SWAGGER/OPENAPI IS AN UNOFFICAL PROJECT NOT SPONSORED BY SCRYFALL: Scryfall provides a REST-like API for ingesting their card data programatically. The API exposes information available on the regular site in easy-to-consume formats. Original documentation is located on Scryfall's official website: https://scryfall.com/docs/api"
 servers:
   - url: "https://api.scryfall.com"
 tags:
   - name: sets
     description: "A Set object represents a group of related Magic cards. All Card objects on Scryfall belong to exactly one set. Due to Magic’s long and complicated history, Scryfall includes many un-official sets as a way to group promotional or outlier cards together. Such sets will likely have a code that begins with p or t, such as pcel or tori. Official sets always have a three-letter set code, such as zen."
   - name: cards
-    description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions)."
+    description: "Card objects represent individual Magic: The Gathering cards that players could obtain and add to their collection (with a few minor exceptions). Cards are the API’s most complex object. You are encouraged to thoroughly read this document (https://scryfall.com/docs/api/cards) and also the article about layouts and images. (https://scryfall.com/docs/api/layouts)"
   - name: rulings
     description: "Rulings represent Oracle rulings, Wizards of the Coast set release notes, or Scryfall notes for a particular card.If two cards have the same name, they will have the same set of rulings objects. If a card has rulings, it usually has more than one.Rulings with a scryfall source have been added by the Scryfall team, either to provide additional context for the card, or explain how the card works in an unofficial format (such as Duel Commander)."
   - name: card symbols
