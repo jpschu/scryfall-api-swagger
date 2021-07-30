@@ -1,5 +1,12 @@
 type: object
 properties:
+  object:
+    type: string
+    default: "ruling"
+  oracle_id:
+    type: string
+    format: uuid
+    nullable: true
   source:
     description: "A computer-readable string indicating which company produced this ruling, either wotc or scryfall."
     type: string

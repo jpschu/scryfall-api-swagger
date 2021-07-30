@@ -2,7 +2,7 @@ type: object
 properties:
   object:
     type: string
-    default: "bulk-date"
+    default: "bulk-data"
   id:
     description: "A unique ID for this bulk item."
     type: string

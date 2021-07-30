@@ -1,7 +1,7 @@
 get:
   tags:
     - cards
-  summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation under the list schema and the Error type  to understand all of the possible output from this method. If only one card is found, this method will still return a List." #TODO: need error type section and order and unique
+  summary: "Returns a List object containing Cards found using a fulltext search string. This string supports the same fulltext search system that the main site uses. This method is paginated, returning 175 cards at a time. Review the documentation under the list schema and the Error type  to understand all of the possible output from this method. If only one card is found, this method will still return a List. To learn more about the order and unqiue parameters - visit the official documenation (https://scryfall.com/docs/api/cards/search)"
   parameters:
   - name: q
     in: query
