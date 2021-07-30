@@ -1,6 +1,9 @@
 description: ""
 type: object
 properties:
+  object:
+    type: string
+    default: "set"
   id:
     description: "A unique ID for this set on Scryfall that will not change."
     type: string
@@ -21,6 +24,7 @@ properties:
     type: string
   set_type:
     description: "A computer-readable classification for this set. See below."
+    $ref: '../schemas/set_types.yaml'
   released_at:
     description: "The date the set was released or the first card was printed in the set (in GMT-8 Pacific time)."
     type: string

@@ -1,7 +1,7 @@
 get:
   tags:
     - sets
-  summary: "Returns a Set with the given `tcgplayer_id`, also known as the groupId on TCGplayer’s API."
+  summary: "Returns a Set with the given `tcgplayer_id`, also known as the groupId on [TCGplayer’s API](https://docs.tcgplayer.com/docs)."
   parameters:
     - name: id
       in: path
