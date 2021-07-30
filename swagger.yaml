@@ -2,7 +2,7 @@ openapi: "3.0.0"
 info:
   version: "0.0.0"
   title: "Scryfall API Documentation"
-  description: "THIS SWAGGER/OPENAPI IS AN UNOFFICAL PROJECT NOT SPONSORED BY SCRYFALL: Scryfall provides a REST-like API for ingesting their card data programatically. The API exposes information available on the regular site in easy-to-consume formats. Original documentation is located on Scryfall's official website: https://scryfall.com/docs/api"
+  description: "THIS SWAGGER/OPENAPI IS AN UNOFFICAL PROJECT NOT SPONSORED BY SCRYFALL: Scryfall provides a REST-like API for ingesting their card data programatically. The API exposes information available on the regular site in easy-to-consume formats. Original documentation is located on Scryfall's official website: https://scryfall.com/docs/api . OAuth and registered API applications are currently in private beta. Public registration for applications is not currently available. The authorization on this page is for documentation purposes only"
 servers:
   - url: "https://api.scryfall.com"
 tags:
